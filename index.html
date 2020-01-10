@@ -2,8 +2,8 @@
 <html>
 <head>
 
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>LandingPage</title>
+    <meta name="viewport" content="width=device-width,user-scalable=" no" , initial-scale=1">
+    <title>Haushaltsbuch</title>
 
     <!-- JavaScrpipt -->
     <script type="text/javascript" src="js/jquery/3.4.1/jquery.min.js"></script>
@@ -16,7 +16,10 @@
     <link rel="stylesheet" href="css/fontawesome/css/all.css">
     <link rel="stylesheet" href="css/main.css">
 </head>
-<body style="background-color: #E0F8E6">
+
+
+<!-- <body style="background-color: #E0F8E6"> -->
+<body>
     <style>
         /* The switch - the box around the slider */
 
@@ -89,11 +92,24 @@
                 border-radius: 50%;
             }
 
-        #back
+
+
+
+        body {
+            // text-align: center;
+            justify-content: center;
+            align-items: center;
+            background: #E0F8E6;
+        }
+
+
+
+
     </style>
+    <!-- Start Content -->
 
 
-    <div class="content" style="text-align: center;">
+    <div class="content_main" style="text-align: center;">
         <div class="pos-f-t">
             <div class="collapse" id="navbarToggleExternalContent">
                 <div id="headercontent" class="bg-success p-4">
@@ -113,117 +129,83 @@
             </nav>
         </div>
         <br />
-        <div class="container-fluid ">
+        <br />
 
-            <!-- Input Fields -->
+            <!-- SAFE -->
             <div class="input-group input-group-lg">
                 <div class="input-group-prepend">
-                    <label class="input-group-text" for="inputGroupSelect01">Datum</label>
+                    <button type="button" class="btn btn-success">Datum</button>
                 </div>
                 <input type="date" class="form-control" id="inputDate" placeholder="JJJJ/MM/TT" onchange="changeDate(this.value);">
             </div>
             <br />
-
-                <div class="card text-left">
-                    <div class="card-body">
-                      <h1 class="card-text" id="card_date" style="font-size: 80px; text-align: center;">100</h1>
-                        <br />
-                    </div>
+            <br />
+            <div class="input-group input-group-lg">
+                <div class="input-group-prepend">
+                    <button type="button" class="btn btn-success">Kategorie</button>
                 </div>
+                <select class="custom-select" id="inputKategorie">
+                    <option selected>Auswählen...</option>
+                    <option value="1">Fahrrad</option>
+                    <option value="2">Essen</option>
+                    <option value="3">Kino</option>
+                    <option selected>Auswählen...</option>
+                    <option value="1">Fahrrad</option>
+                    <option value="2">Essen</option>
+                    <option value="3">Kino</option>
 
-                <br />
-                <div class="row">
-                    <div class="col-sm-6">
+                    <option value="1">Fahrrad</option>
+                    <option value="2">Essen</option>
+                    <option value="3">Kino</option>
 
-                        <div class="card text-left">
-                            <div class="card-body">
-                                <h5 class="card-title">Betrag</h5>
-                                <h1 class="card-text" style="font-size: 80px; text-align: center;">100</h1>
-                                <br />
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-6">
-                        <div class="card">
-                            <div class="card-body">
-                                <h5 class="card-title">Kategorie</h5>
-                                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                                <a href="#" class="btn btn-primary">Go somewhere</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                    <option value="1">Fahrrad</option>
+                    <option value="2">Essen</option>
+                    <option value="3">Kino</option>
 
-                <br />
-                <div class="input-group input-group-lg">
-                    <div class="input-group-prepend">
-                        <label class="input-group-text" for="inputGroupSelect01">Kategorie</label>
-                    </div>
-                    <select class="custom-select" id="inputKategorie">
-                        <option selected>Auswählen...</option>
-                        <option value="1">Fahrrad</option>
-                        <option value="2">Essen</option>
-                        <option value="3">Kino</option>
-                        <option selected>Auswählen...</option>
-                        <option value="1">Fahrrad</option>
-                        <option value="2">Essen</option>
-                        <option value="3">Kino</option>
+                    <option value="1">Fahrrad</option>
+                    <option value="2">Essen</option>
+                    <option value="3">Kino</option>
 
-                        <option value="1">Fahrrad</option>
-                        <option value="2">Essen</option>
-                        <option value="3">Kino</option>
-
-                        <option value="1">Fahrrad</option>
-                        <option value="2">Essen</option>
-                        <option value="3">Kino</option>
-
-                        <option value="1">Fahrrad</option>
-                        <option value="2">Essen</option>
-                        <option value="3">Kino</option>
-
-                        <option value="1">Fahrrad</option>
-                        <option value="2">Essen</option>
-                        <option value="3">Kino</option>
-                    </select>
-                </div>
-                <br />
-
-                <div class="input-group input-group-lg">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text">Betrag</span>
-                    </div>
-                    <input type="number" class="form-control" id="inputBetrag" aria-label="Amount (to the nearest dollar)" onchange="changeBetrag(this.value);">
-                    <div class="input-group-append">
-                        <span class="input-group-text">€</span>
-                        <span class="input-group-text">0.00</span>
-                    </div>
-                </div>
-                <br />
-                <div class="input-group input-group-lg">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text">Bemerkung</span>
-                    </div>
-                    <textarea class="form-control" id="inputKommentar" aria-label="Bemerkung" onchange="changeKommentar(this.value);"></textarea>
-                </div>
-                <br />
-              <div class="card text-left">
-                    <div class="card-body">
-                      <h1 class="card-text" id="H1" style="font-size: 80px; text-align: center;">100</h1>
-                        <br />
-                    </div>
-                </div>
-                <br />
-      
-                <button id="id_btn_buchen" type="button" class="btn btn-success btn-lg" onclick="buchen();">Buchön!</button>
-                <!-- Footer-->
-                <nav id="footer" class="navbar fixed-bottom navbar-expand-sm navbar-success bg-success">
-                </nav>
+                    <option value="1">Fahrrad</option>
+                    <option value="2">Essen</option>
+                    <option value="3">Kino</option>
+                </select>
             </div>
-    </div>
+            <br />
+       
+            <div class="input-group input-group-lg">
+                <div class="input-group-prepend">
+                    <button type="button" class="btn btn-success">Betrag</button>
+                </div>
+                <input type="number" class="form-control" id="inputBetrag" aria-label="Amount (to the nearest dollar)" onchange="changeBetrag(this.value);">
 
+            </div>
+            <br />
+            <div class="input-group input-group-lg">
+                <div class="input-group-prepend">
+                    <button type="button" class="btn btn-success">Bemerkung</button>
+                </div>
+                <textarea class="form-control" id="inputKommentar" aria-label="Bemerkung" onchange="changeKommentar(this.value);"></textarea>
+            </div>
+            <br />
+
+            <br />
+
+            <button id="id_btn_buchen" type="button" class="btn btn-success btn-lg" onclick="buchen();">Buchön!</button>
+
+        </div>
+        <br>
+        <br>
+
+        <!-- Footer-->
+        <nav id="footer" class="navbar fixed-bottom navbar-expand-sm navbar-success bg-success">
+        </nav>
+
+    </div>
     <!-- End Content -->
 
 </body>
+
 </html>
 
 
