@@ -101,24 +101,21 @@
     </style>
 
 
-    <!-- <div id="Navbar_id"></div>-->
-    <!-- Page content -->
     <div class="content" style="text-align: center">
-
         <div class="pos-f-t">
             <div class="collapse" id="navbarToggleExternalContent">
-                <div class="bg-success p-4">
+                <div id ="headercontent" class="bg-success p-4">
                     <h5 class="text-white h4">Collapsed content</h5>
                     <span class="text-white">Toggleable via the navbar brand.</span>
                 </div>
             </div>
-            <nav class="navbar navbar-dark bg-success">
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
+            <nav id="id_navbar" class="navbar navbar-dark bg-success" style="color:white;">
+                <button class="navbar-toggler "  style="color:white; border:1px solid;"  type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation"  >       
+                     <span style="font-size:larger;"><i class="fas fa-bars"></i></span>
                 </button>
                 <!-- Rounded switch -->
                 <label class="switch">
-                    <input type="checkbox">
+                    <input type="checkbox" onclick="toggleMode();">
                     <span class="slider round"></span>
                 </label>
             </nav>
@@ -131,10 +128,8 @@
                     <div class="input-group-prepend">
                         <label class="input-group-text" for="inputGroupSelect01">Datum</label>
                     </div>
-                    <input type="date" class="form-control" id="DateInput" placeholder="JJJJ/MM/TT">
+                    <input type="date" class="form-control" id="inputDate" placeholder="JJJJ/MM/TT" onchange="changeDate(this.value);">
                 </div>
-
-
             <br />
             <br />
             <br />
@@ -149,7 +144,7 @@
                 <div class="input-group-prepend">
                     <label class="input-group-text" for="inputGroupSelect01">Kategorie</label>
                 </div>
-                <select class="custom-select" id="inputGroupSelect01">
+                <select class="custom-select" id="inputKategorie">
                     <option selected>Auswählen...</option>
                     <option value="1">Fahrrad</option>
                     <option value="2">Essen</option>
@@ -158,19 +153,19 @@
                     <option value="1">Fahrrad</option>
                     <option value="2">Essen</option>
                     <option value="3">Kino</option>
-                    <option selected>Auswählen...</option>
+                    
                     <option value="1">Fahrrad</option>
                     <option value="2">Essen</option>
                     <option value="3">Kino</option>
-                    <option selected>Auswählen...</option>
+                   
                     <option value="1">Fahrrad</option>
                     <option value="2">Essen</option>
                     <option value="3">Kino</option>
-                    <option selected>Auswählen...</option>
+                 
                     <option value="1">Fahrrad</option>
                     <option value="2">Essen</option>
                     <option value="3">Kino</option>
-                    <option selected>Auswählen...</option>
+                   
                     <option value="1">Fahrrad</option>
                     <option value="2">Essen</option>
                     <option value="3">Kino</option>
@@ -182,7 +177,7 @@
                 <div class="input-group-prepend">
                     <span class="input-group-text">Betrag</span>
                 </div>
-                <input type="number" class="form-control" aria-label="Amount (to the nearest dollar)">
+                <input type="number" class="form-control" id="inputBetrag" aria-label="Amount (to the nearest dollar)" onchange="changeBetrag(this.value);">
                 <div class="input-group-append">
                     <span class="input-group-text">€</span>
                     <span class="input-group-text">0.00</span>
@@ -193,15 +188,15 @@
                 <div class="input-group-prepend">
                     <span class="input-group-text">Bemerkung</span>
                 </div>
-                <textarea class="form-control" aria-label="Bemerkung"></textarea>
+                <textarea class="form-control" id="inputKommentar" aria-label="Bemerkung" onchange="changeKommentar(this.value);"></textarea>
             </div>
             <br />
             <br />
             <br />
             <br />
-            <button type="button" class="btn btn-success btn-lg ">Buchön!</button>
+            <button id="id_btn_buchen" type="button" class="btn btn-success btn-lg" onclick="buchen();">Buchön!</button>
             <!-- Footer-->
-            <nav class="navbar fixed-bottom navbar-expand-sm navbar-success bg-success">
+            <nav id ="footer" class="navbar fixed-bottom navbar-expand-sm navbar-success bg-success">
             </nav>
         </div>
     </div>
@@ -216,6 +211,7 @@
     //Variables
 
     var currDate = "";
+    var vartoggleMenue = "0";
 
     //Document Ready
 
@@ -234,11 +230,49 @@
     });
 
 
-    //Date Change
-    $(document).change(function () {
-         currDate = document.getElementById('DateInput').value;
+
+    //Change Datum
+    function changeDate(data) {
+
+        alert(data);
+    }
+
+    // Change Kategorie
+    $('#inputKategorie').on('change', function () {
+        alert(this.value);
     });
 
+    // Change Betrag
+    function changeBetrag(data) {
 
+        alert(data);
+    }
 
+    // Change Kommentar
+    function changeKommentar(data) {
+
+        alert(data);
+    }
+
+    //Change Mode
+   function toggleMode(){
+       if (vartoggleMenue == "0") {
+           $('#id_navbar').removeClass("navbar navbar-dark bg-success").addClass("navbar navbar-dark bg-danger");
+           $('#headercontent').removeClass("bg-success p-4").addClass("bg-danger p-4");
+           $('#id_btn_buchen').removeClass("btn btn-success btn-lg").addClass("btn btn-danger btn-lg");
+           $('#footer').removeClass("navbar fixed-bottom navbar-expand-sm navbar-success bg-success").addClass("navbar fixed-bottom navbar-expand-sm navbar-success bg-danger");
+           vartoggleMenue = "1";
+       } else {
+           $('#id_navbar').removeClass("navbar navbar-dark bg-danger").addClass("navbar navbar-dark bg-success");
+           $('#headercontent').removeClass("bg-danger p-4").addClass("bg-success p-4");
+           $('#id_btn_buchen').removeClass("btn btn-danger btn-lg").addClass("btn btn-success btn-lg");
+           $('#footer').removeClass("navbar fixed-bottom navbar-expand-sm navbar-success bg-danger").addClass("navbar fixed-bottom navbar-expand-sm navbar-success bg-success");
+           vartoggleMenue = "0";
+       }
+
+    }
+
+   function buchen() {
+       alert("noch niiiicht");
+   }
 </script>
