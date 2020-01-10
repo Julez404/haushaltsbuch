@@ -1,5 +1,4 @@
-﻿
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 <head>
 
@@ -16,15 +15,8 @@
     <link rel="stylesheet" href="css/bootstrap/bootstrap-4.3.1-dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/fontawesome/css/all.css">
     <link rel="stylesheet" href="css/main.css">
-
-
-
-
-
-
-
 </head>
-<body style="background-color:#E0F8E6">
+<body style="background-color: #E0F8E6">
     <style>
         /* The switch - the box around the slider */
 
@@ -32,7 +24,7 @@
         Danger      #DC3545
         Success     #28A745
             */
-        
+
         .switch {
             position: relative;
             display: inline-block;
@@ -96,21 +88,22 @@
             .slider.round:before {
                 border-radius: 50%;
             }
-            #back
-    </style>
-   
 
-    <div class="content" style="text-align: center; ">
+        #back
+    </style>
+
+
+    <div class="content" style="text-align: center;">
         <div class="pos-f-t">
             <div class="collapse" id="navbarToggleExternalContent">
-                <div id ="headercontent" class="bg-success p-4">
+                <div id="headercontent" class="bg-success p-4">
                     <h5 class="text-white h4">Collapsed content</h5>
                     <span class="text-white">Toggleable via the navbar brand.</span>
                 </div>
             </div>
-            <nav id="id_navbar" class="navbar navbar-dark bg-success" style="color:white;">
-                <button class="navbar-toggler "  style="color:white; border:1px solid;"  type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation"  >       
-                     <span style="font-size:larger;"><i class="fas fa-bars"></i></span>
+            <nav id="id_navbar" class="navbar navbar-dark bg-success" style="color: white;">
+                <button class="navbar-toggler " style="color: white; border: 1px solid;" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span style="font-size: larger;"><i class="fas fa-bars"></i></span>
                 </button>
                 <!-- Rounded switch -->
                 <label class="switch">
@@ -123,87 +116,116 @@
         <div class="container-fluid ">
 
             <!-- Input Fields -->
+            <div class="input-group input-group-lg">
+                <div class="input-group-prepend">
+                    <label class="input-group-text" for="inputGroupSelect01">Datum</label>
+                </div>
+                <input type="date" class="form-control" id="inputDate" placeholder="JJJJ/MM/TT" onchange="changeDate(this.value);">
+            </div>
+            <br />
+
+                <div class="card text-left">
+                    <div class="card-body">
+                      <h1 class="card-text" id="card_date" style="font-size: 80px; text-align: center;">100</h1>
+                        <br />
+                    </div>
+                </div>
+
+                <br />
+                <div class="row">
+                    <div class="col-sm-6">
+
+                        <div class="card text-left">
+                            <div class="card-body">
+                                <h5 class="card-title">Betrag</h5>
+                                <h1 class="card-text" style="font-size: 80px; text-align: center;">100</h1>
+                                <br />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Kategorie</h5>
+                                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                                <a href="#" class="btn btn-primary">Go somewhere</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <br />
                 <div class="input-group input-group-lg">
                     <div class="input-group-prepend">
-                        <label class="input-group-text" for="inputGroupSelect01">Datum</label>
+                        <label class="input-group-text" for="inputGroupSelect01">Kategorie</label>
                     </div>
-                    <input type="date" class="form-control" id="inputDate" placeholder="JJJJ/MM/TT" onchange="changeDate(this.value);">
-                </div>
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
+                    <select class="custom-select" id="inputKategorie">
+                        <option selected>Auswählen...</option>
+                        <option value="1">Fahrrad</option>
+                        <option value="2">Essen</option>
+                        <option value="3">Kino</option>
+                        <option selected>Auswählen...</option>
+                        <option value="1">Fahrrad</option>
+                        <option value="2">Essen</option>
+                        <option value="3">Kino</option>
 
-            <div class="input-group input-group-lg">
-                <div class="input-group-prepend">
-                    <label class="input-group-text" for="inputGroupSelect01">Kategorie</label>
-                </div>
-                <select class="custom-select" id="inputKategorie">
-                    <option selected>Auswählen...</option>
-                    <option value="1">Fahrrad</option>
-                    <option value="2">Essen</option>
-                    <option value="3">Kino</option>
-                    <option selected>Auswählen...</option>
-                    <option value="1">Fahrrad</option>
-                    <option value="2">Essen</option>
-                    <option value="3">Kino</option>
-                    
-                    <option value="1">Fahrrad</option>
-                    <option value="2">Essen</option>
-                    <option value="3">Kino</option>
-                   
-                    <option value="1">Fahrrad</option>
-                    <option value="2">Essen</option>
-                    <option value="3">Kino</option>
-                 
-                    <option value="1">Fahrrad</option>
-                    <option value="2">Essen</option>
-                    <option value="3">Kino</option>
-                   
-                    <option value="1">Fahrrad</option>
-                    <option value="2">Essen</option>
-                    <option value="3">Kino</option>
-                </select>
-            </div>
-            <br />
+                        <option value="1">Fahrrad</option>
+                        <option value="2">Essen</option>
+                        <option value="3">Kino</option>
 
-            <div class="input-group input-group-lg">
-                <div class="input-group-prepend">
-                    <span class="input-group-text">Betrag</span>
+                        <option value="1">Fahrrad</option>
+                        <option value="2">Essen</option>
+                        <option value="3">Kino</option>
+
+                        <option value="1">Fahrrad</option>
+                        <option value="2">Essen</option>
+                        <option value="3">Kino</option>
+
+                        <option value="1">Fahrrad</option>
+                        <option value="2">Essen</option>
+                        <option value="3">Kino</option>
+                    </select>
                 </div>
-                <input type="number" class="form-control" id="inputBetrag" aria-label="Amount (to the nearest dollar)" onchange="changeBetrag(this.value);">
-                <div class="input-group-append">
-                    <span class="input-group-text">€</span>
-                    <span class="input-group-text">0.00</span>
+                <br />
+
+                <div class="input-group input-group-lg">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">Betrag</span>
+                    </div>
+                    <input type="number" class="form-control" id="inputBetrag" aria-label="Amount (to the nearest dollar)" onchange="changeBetrag(this.value);">
+                    <div class="input-group-append">
+                        <span class="input-group-text">€</span>
+                        <span class="input-group-text">0.00</span>
+                    </div>
                 </div>
+                <br />
+                <div class="input-group input-group-lg">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">Bemerkung</span>
+                    </div>
+                    <textarea class="form-control" id="inputKommentar" aria-label="Bemerkung" onchange="changeKommentar(this.value);"></textarea>
+                </div>
+                <br />
+              <div class="card text-left">
+                    <div class="card-body">
+                      <h1 class="card-text" id="H1" style="font-size: 80px; text-align: center;">100</h1>
+                        <br />
+                    </div>
+                </div>
+                <br />
+      
+                <button id="id_btn_buchen" type="button" class="btn btn-success btn-lg" onclick="buchen();">Buchön!</button>
+                <!-- Footer-->
+                <nav id="footer" class="navbar fixed-bottom navbar-expand-sm navbar-success bg-success">
+                </nav>
             </div>
-            <br />
-            <div class="input-group input-group-lg">
-                <div class="input-group-prepend">
-                    <span class="input-group-text">Bemerkung</span>
-                </div>
-                <textarea class="form-control" id="inputKommentar" aria-label="Bemerkung" onchange="changeKommentar(this.value);"></textarea>
-            </div>
-            <br />
-            <br />
-            <br />
-            <br />
-            <button id="id_btn_buchen" type="button" class="btn btn-success btn-lg" onclick="buchen();">Buchön!</button>
-            <!-- Footer-->
-            <nav id ="footer" class="navbar fixed-bottom navbar-expand-sm navbar-success bg-success">
-            </nav>
-        </div>
     </div>
-   
+
     <!-- End Content -->
 
 </body>
 </html>
+
 
 
 <script>
@@ -221,10 +243,14 @@
         var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
         var yyyy = today.getFullYear();
 
-   //     today = mm + '/' + dd + '/' + yyyy;
-   //     document.write(today);
+        //     today = mm + '/' + dd + '/' + yyyy;
+        //     document.write(today);
         currDate = yyyy + '-' + mm + '-' + dd;
         $('#inputDate').val(currDate);
+        $('#card_date').val(currDate);
+
+        var h1 = document.getElementsByTagName('h1')[0];
+        h1.innerHTML = currDate;
     });
 
 
@@ -253,27 +279,27 @@
     }
 
     //Change Mode
-   function toggleMode(){
-       if (vartoggleMenue == "0") {
-           $('#id_navbar').removeClass("navbar navbar-dark bg-success").addClass("navbar navbar-dark bg-danger");
-           $('#headercontent').removeClass("bg-success p-4").addClass("bg-danger p-4");
-           $('#id_btn_buchen').removeClass("btn btn-success btn-lg").addClass("btn btn-danger btn-lg");
-           $('#footer').removeClass("navbar fixed-bottom navbar-expand-sm navbar-success bg-success").addClass("navbar fixed-bottom navbar-expand-sm navbar-success bg-danger");
-           vartoggleMenue = "1";
-           $('body').css('background-color', '#FAD9DC');
-          
-       } else {
-           $('#id_navbar').removeClass("navbar navbar-dark bg-danger").addClass("navbar navbar-dark bg-success");
-           $('#headercontent').removeClass("bg-danger p-4").addClass("bg-success p-4");
-           $('#id_btn_buchen').removeClass("btn btn-danger btn-lg").addClass("btn btn-success btn-lg");
-           $('#footer').removeClass("navbar fixed-bottom navbar-expand-sm navbar-success bg-danger").addClass("navbar fixed-bottom navbar-expand-sm navbar-success bg-success");
-           vartoggleMenue = "0";
-           $('body').css('background-color', '#E0F8E6');
-       }
+    function toggleMode() {
+        if (vartoggleMenue == "0") {
+            $('#id_navbar').removeClass("navbar navbar-dark bg-success").addClass("navbar navbar-dark bg-danger");
+            $('#headercontent').removeClass("bg-success p-4").addClass("bg-danger p-4");
+            $('#id_btn_buchen').removeClass("btn btn-success btn-lg").addClass("btn btn-danger btn-lg");
+            $('#footer').removeClass("navbar fixed-bottom navbar-expand-sm navbar-success bg-success").addClass("navbar fixed-bottom navbar-expand-sm navbar-success bg-danger");
+            vartoggleMenue = "1";
+            $('body').css('background-color', '#FAD9DC');
+
+        } else {
+            $('#id_navbar').removeClass("navbar navbar-dark bg-danger").addClass("navbar navbar-dark bg-success");
+            $('#headercontent').removeClass("bg-danger p-4").addClass("bg-success p-4");
+            $('#id_btn_buchen').removeClass("btn btn-danger btn-lg").addClass("btn btn-success btn-lg");
+            $('#footer').removeClass("navbar fixed-bottom navbar-expand-sm navbar-success bg-danger").addClass("navbar fixed-bottom navbar-expand-sm navbar-success bg-success");
+            vartoggleMenue = "0";
+            $('body').css('background-color', '#E0F8E6');
+        }
 
     }
 
-   function buchen() {
-       alert("noch niiiicht");
-   }
+    function buchen() {
+        alert("noch niiiicht");
+    }
 </script>
