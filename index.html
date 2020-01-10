@@ -24,7 +24,7 @@
 
 
 </head>
-<body>
+<body style="background-color:#E0F8E6">
     <style>
         /* The switch - the box around the slider */
 
@@ -32,7 +32,7 @@
         Danger      #DC3545
         Success     #28A745
             */
-
+        
         .switch {
             position: relative;
             display: inline-block;
@@ -96,10 +96,11 @@
             .slider.round:before {
                 border-radius: 50%;
             }
+            #back
     </style>
+   
 
-
-    <div class="content" style="text-align: center">
+    <div class="content" style="text-align: center; ">
         <div class="pos-f-t">
             <div class="collapse" id="navbarToggleExternalContent">
                 <div id ="headercontent" class="bg-success p-4">
@@ -259,12 +260,15 @@
            $('#id_btn_buchen').removeClass("btn btn-success btn-lg").addClass("btn btn-danger btn-lg");
            $('#footer').removeClass("navbar fixed-bottom navbar-expand-sm navbar-success bg-success").addClass("navbar fixed-bottom navbar-expand-sm navbar-success bg-danger");
            vartoggleMenue = "1";
+           $('body').css('background-color', '#FAD9DC');
+          
        } else {
            $('#id_navbar').removeClass("navbar navbar-dark bg-danger").addClass("navbar navbar-dark bg-success");
            $('#headercontent').removeClass("bg-danger p-4").addClass("bg-success p-4");
            $('#id_btn_buchen').removeClass("btn btn-danger btn-lg").addClass("btn btn-success btn-lg");
            $('#footer').removeClass("navbar fixed-bottom navbar-expand-sm navbar-success bg-danger").addClass("navbar fixed-bottom navbar-expand-sm navbar-success bg-success");
            vartoggleMenue = "0";
+           $('body').css('background-color', '#E0F8E6');
        }
 
     }
