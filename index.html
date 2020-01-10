@@ -1,0 +1,244 @@
+﻿
+<!DOCTYPE html>
+<html>
+<head>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>LandingPage</title>
+
+    <!-- JavaScrpipt -->
+    <script type="text/javascript" src="js/jquery/3.4.1/jquery.min.js"></script>
+    <script type="text/javascript" src="js/importHTML.js"></script>
+    <script type="text/javascript" src="css/fontawesome/js/all.js"></script>
+    <script type="text/javascript" src="css/bootstrap/bootstrap-4.3.1-dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="codenext/calendar/lib/bootstrap-datepicker.js"></script>
+
+    <!-- StyleSheet -->
+    <link rel="stylesheet" href="css/bootstrap/bootstrap-4.3.1-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/fontawesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="codenext/calendar/lib/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="css/main.css">
+
+
+
+
+
+
+
+</head>
+<body>
+    <style>
+        /* The switch - the box around the slider */
+
+        /* Colors
+        Danger      #DC3545
+        Success     #28A745
+            */
+
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 60px;
+            height: 34px;
+        }
+
+            /* Hide default HTML checkbox */
+            .switch input {
+                opacity: 0;
+                width: 0;
+                height: 0;
+            }
+
+        /* The slider */
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #28A745;
+            -webkit-transition: .4s;
+            transition: .4s;
+        }
+
+            .slider:before {
+                position: absolute;
+                content: "";
+                height: 20px;
+                width: 20px;
+                left: 3px;
+                bottom: 4px;
+                background-color: white;
+                -webkit-transition: .4s;
+                transition: .4s;
+            }
+
+        input:checked + .slider {
+            background-color: #DC3545;
+        }
+
+        input:focus + .slider {
+            box-shadow: 0 0 1px #28A745;
+        }
+
+        input:checked + .slider:before {
+            -ms-transform: translateX(32px);
+            transform: translateX(32px);
+        }
+
+        /* Rounded sliders */
+        .slider.round {
+            border-radius: 36px;
+            margin-top: 5px;
+            border: 1px solid white;
+            border-collapse: collapse;
+        }
+
+            .slider.round:before {
+                border-radius: 50%;
+            }
+    </style>
+
+
+    <!-- <div id="Navbar_id"></div>-->
+    <!-- Page content -->
+    <div class="content" style="text-align: center">
+
+        <div class="pos-f-t">
+            <div class="collapse" id="navbarToggleExternalContent">
+                <div class="bg-success p-4">
+                    <h5 class="text-white h4">Collapsed content</h5>
+                    <span class="text-white">Toggleable via the navbar brand.</span>
+                </div>
+            </div>
+            <nav class="navbar navbar-dark bg-success">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <!-- Rounded switch -->
+                <label class="switch">
+                    <input type="checkbox">
+                    <span class="slider round"></span>
+                </label>
+            </nav>
+        </div>
+        <br />
+        <div class="container-fluid ">
+
+            <!-- Input Fields -->
+                <div class="input-group input-group-lg">
+                    <div class="input-group-prepend">
+                        <label class="input-group-text" for="inputGroupSelect01">Datum</label>
+                    </div>
+                    <input type="date" class="form-control" id="DateInput" placeholder="JJJJ/MM/TT">
+                </div>
+
+
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+
+            <div class="input-group input-group-lg">
+                <div class="input-group-prepend">
+                    <label class="input-group-text" for="inputGroupSelect01">Kategorie</label>
+                </div>
+                <select class="custom-select" id="inputGroupSelect01">
+                    <option selected>Auswählen...</option>
+                    <option value="1">Fahrrad</option>
+                    <option value="2">Essen</option>
+                    <option value="3">Kino</option>
+                    <option selected>Auswählen...</option>
+                    <option value="1">Fahrrad</option>
+                    <option value="2">Essen</option>
+                    <option value="3">Kino</option>
+                    <option selected>Auswählen...</option>
+                    <option value="1">Fahrrad</option>
+                    <option value="2">Essen</option>
+                    <option value="3">Kino</option>
+                    <option selected>Auswählen...</option>
+                    <option value="1">Fahrrad</option>
+                    <option value="2">Essen</option>
+                    <option value="3">Kino</option>
+                    <option selected>Auswählen...</option>
+                    <option value="1">Fahrrad</option>
+                    <option value="2">Essen</option>
+                    <option value="3">Kino</option>
+                    <option selected>Auswählen...</option>
+                    <option value="1">Fahrrad</option>
+                    <option value="2">Essen</option>
+                    <option value="3">Kino</option>
+                </select>
+            </div>
+            <br />
+
+            <div class="input-group input-group-lg">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">Betrag</span>
+                </div>
+                <input type="number" class="form-control" aria-label="Amount (to the nearest dollar)">
+                <div class="input-group-append">
+                    <span class="input-group-text">€</span>
+                    <span class="input-group-text">0.00</span>
+                </div>
+            </div>
+            <br />
+            <div class="input-group input-group-lg">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">Bemerkung</span>
+                </div>
+                <textarea class="form-control" aria-label="Bemerkung"></textarea>
+            </div>
+            <br />
+            <br />
+            <br />
+            <br />
+            <button type="button" class="btn btn-success btn-lg ">Buchön!</button>
+            <!-- Footer-->
+            <nav class="navbar fixed-bottom navbar-expand-sm navbar-success bg-success">
+            </nav>
+        </div>
+    </div>
+   
+    <!-- End Content -->
+
+</body>
+</html>
+
+
+<script>
+    //Variables
+
+    var currDate = "";
+
+    //Document Ready
+
+    $(document).ready(function () {
+        console.log("ready!");
+        var today = new Date();
+        var dd = String(today.getDate()).padStart(2, '0');
+        var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+        var yyyy = today.getFullYear();
+
+   //     today = mm + '/' + dd + '/' + yyyy;
+   //     document.write(today);
+        currDate = yyyy + '-' + mm + '-' + dd;
+        $('#DateInput').val(currDate);
+
+    });
+
+
+    //Date Change
+    $(document).change(function () {
+         currDate = document.getElementById('DateInput').value;
+    });
+
+
+
+</script>
