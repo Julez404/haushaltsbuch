@@ -280,20 +280,27 @@
 			dataType : 'html',
 			success: function(data) 
 			{
-				alert(data.id);
 				var json_data = JSON.parse(data);
-				var result = [];
+				alert(json_data[3].name);
+				console.log(json_data);
 				
-				for(var i in json_data)
-					result.push([i, json_data [i]]);
-    
-    			alert(result);
-				/*				
+				
+				
+				
+				//ANDERE TESTS
+				
+				//var json_data = JSON.parse(data);
+				//var result = [];
+				
+				//for(var i in json_data)
+				//	result.push([i, json_data [i]]);
+    			//alert(result);
+				/*			
 				for(var i = 0; i < data.length;i++)
 				{
 					alert(data[i]);
 					// Verstehe nicht warum der Alert nicht klappt
-					//alert(JSON.stringify(data[i], null, 4));
+					alert(JSON.stringify(data[i], null, 4));
 					console.log(data[i]);
 				}
 				/*
