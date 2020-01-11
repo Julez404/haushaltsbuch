@@ -9,7 +9,7 @@ $sql = new mysqli(ini_get("mysqli.default_host"), ini_get("mysqli.default_user")
 // Check connection
 if ($sql->connect_error)
 {
-	http_response_code(250);
+	http_response_code(550);
 	die("Connection failed: " . $sql->connect_error);
 }
 
@@ -17,7 +17,7 @@ if ($sql->connect_error)
 $result = $sql->query("CALL $procedure");
 if ($result == false)
 {
-	http_response_code(251);
+	http_response_code(551);
 	die("Query failed!");
 }
 

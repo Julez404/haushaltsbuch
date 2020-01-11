@@ -15,7 +15,7 @@ $sql = new mysqli(ini_get("mysqli.default_host"), ini_get("mysqli.default_user")
 // Check connection
 if ($sql->connect_error)
 {
-	http_response_code(250);
+	http_response_code(550);
 	die("Connection failed: " . $sql->connect_error);
 }
 
@@ -29,7 +29,7 @@ if ($type == 'new') {
 	// Check if preparation was successfully
 	if(!$stmt)
 	{
-		http_response_code(252);
+		http_response_code(552);
 		die("Prepared Statement Failed: " . $sql->connect_error);
 	}
 
