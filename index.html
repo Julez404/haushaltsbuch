@@ -125,22 +125,29 @@
     <div id="sidebar">
         <h3>Übersicht<i class="fa fa-times" style="margin-left: 50px;" onclick="$('#sidebar').toggleClass('visible')"></i></h3>
         <ul>
+            <a href="#BuchungSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Buchung</a>
+            <ul class="collapse" id="BuchungSubmenu">
+                <li><a href="#">Neu </a></li>
+                <li><a href="#">Planen</a></li>
+                <li><a href="#">Bearbeiten</a></li>
+            </ul>
 
-           
-            <li><a href="#">Auswertungen</a></li>
-            <li><a href="#">Verkauf</a></li>
-            <li><a href="#">Eike</a></li>
-            <li><a href="#">Gerd</a></li>
-            <li><a href="#">Bullmann</a></li>
-            <li><a href="#">Langes Wort zum Test</a></li>
-
+            <hr />
+            <a href="#AuswertungSubmenue" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Auswertungen</a>
+            <ul class="collapse" id="AuswertungSubmenue">
+                <li><a href="#">Neu </a></li>
+                <li><a href="#">Planen</a></li>
+                <li><a href="#">Bearbeiten</a></li>
+            </ul>
+            <hr />
+            <li><a href="#">Einstellungen</a></li>
+            <li><a href="#">Hilfe & Feedback</a></li>
 
         </ul>
-       
     </div>
 
 
-  
+
 
 
     <div class="content_main" style="text-align: center;">
@@ -173,30 +180,7 @@
                     <button type="button" id="btn_kategorie" class="btn btn-danger">Kategorie</button>
                 </div>
                 <select class="custom-select" id="inputKategorie">
-                    <option selected>Auswählen...</option>
-                    <option value="1">Fahrrad</option>
-                    <option value="2">Essen</option>
-                    <option value="3">Kino</option>
-                    <option selected>Auswählen...</option>
-                    <option value="1">Fahrrad</option>
-                    <option value="2">Essen</option>
-                    <option value="3">Kino</option>
 
-                    <option value="1">Fahrrad</option>
-                    <option value="2">Essen</option>
-                    <option value="3">Kino</option>
-
-                    <option value="1">Fahrrad</option>
-                    <option value="2">Essen</option>
-                    <option value="3">Kino</option>
-
-                    <option value="1">Fahrrad</option>
-                    <option value="2">Essen</option>
-                    <option value="3">Kino</option>
-
-                    <option value="1">Fahrrad</option>
-                    <option value="2">Essen</option>
-                    <option value="3">Kino</option>
                 </select>
             </div>
             <br />
@@ -271,7 +255,7 @@
                 </div>
 
                 <div class="modal-footer">
-                    <button type="button" id="btn_modal_buchen" class="btn btn-danger">Buchen</button>
+                    <button type="button" id="btn_modal_buchen" class="btn btn-danger" onclick="buchen();">Buchen</button>
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Abbrechen</button>
                 </div>
             </div>
@@ -297,6 +281,11 @@
 
     $(document).ready(function () {
         console.log("ready!");
+
+
+        getCategories();
+
+
         var today = new Date();
         var dd = String(today.getDate()).padStart(2, '0');
         var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
@@ -391,7 +380,36 @@
 
 
     function buchen() {
-        alert("noch niiiicht");
+        $.ajax({
+            type: "post",
+          //  url: "callProcedure.php",
+            dataType: 'json',
+            data: { 'postprocedure': 'GetAllCategories' },
+            success: function (data) {
+                console.log(data);
+            }
+        });
+    }
+
+    function getCategories() {
+
+        $.ajax({
+            type: "post",
+            url: "callProcedure.php",
+            dataType: 'json',
+            data: { 'postprocedure': 'GetAllCategories' },
+            success: function (data) {
+                console.log(data);
+                // <option value="1">Fahrrad</option>
+
+                for (i = 0; i < data.length ; i++) {
+                    $("#inputKategorie").append("<option value=" + data[i].id + ">" + data[i].name + "</option>");
+                }
+
+
+
+            }
+        });
     }
 
 </script>
