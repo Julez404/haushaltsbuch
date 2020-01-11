@@ -1,0 +1,201 @@
+﻿<div class="container">
+    <div class="input-group input-group-lg">
+        <div class="input-group-prepend">
+            <button type="button" id="btn_datum" class="btn btn-danger">Datum</button>
+        </div>
+        <input type="date" class="form-control" id="inputDate" placeholder="JJJJ/MM/TT" onchange="changeDate(this.value);">
+    </div>
+    <br />
+    <div class="input-group input-group-lg">
+        <div class="input-group-prepend">
+            <button type="button" id="btn_kategorie" class="btn btn-danger">Kategorie</button> 
+        </div>
+        <select class="custom-select" id="inputKategorie"></select>
+    </div>
+    <br />
+    <div class="input-group input-group-lg">
+        <div class="input-group-prepend">
+            <button type="button" id="btn_betrag" class="btn btn-danger">Betrag</button>
+        </div>
+        <input type="number" class="form-control" id="inputBetrag" onchange="changeBetrag(this.value);" placeholder="420,69">
+        <div class="input-group-append">
+            <button type="button" id="id_info_betrag" class="btn btn-danger short">€</button>
+        </div>
+    </div>
+    <br />
+    <div class="input-group input-group-lg">
+        <div class="input-group-prepend">
+            <button type="button" id="btn_bezeichnung" class="btn btn-danger">Bezeichnung</button>
+        </div>
+        <input type="text" class="form-control" id="inputKommentar" onchange="changeBezeichnung(this.value);" placeholder="Döner sein Vater">
+    </div>
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <button id="id_btn_buchen" type="button" data-toggle="modal" data-target="#exampleModalCenter" class="btn btn-danger btn-lg" onclick="check_buchung();">Buchön!</button>
+</div>
+<br>
+<br>
+
+<script>
+
+    //Variables
+
+    var currDate = "";
+    var currBetrag = "";
+    var currBezeichnung = "";
+    var currKategorieID = "";
+    var currKategorieText = "";
+    var vartoggleMenue = "0";
+
+    //Document Ready
+
+    function toggleSidebar() {
+        $('#sidebar').toggleClass('visible')
+    }
+
+    $(document).ready(function () {
+        console.log("ready!");
+
+
+        getCategories();
+
+
+        var today = new Date();
+        var dd = String(today.getDate()).padStart(2, '0');
+        var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+        var yyyy = today.getFullYear();
+
+        //     today = mm + '/' + dd + '/' + yyyy;
+        //     document.write(today);
+        currDate = yyyy + '-' + mm + '-' + dd;
+        $('#inputDate').val(currDate);
+        /*
+                var modal_date = document.getElementsByTagName('p')[0];
+                modal_date.innerHTML = currDate;
+           */
+    });
+
+
+
+    //Change Datum
+    function changeDate(data) {
+        currDate = this.value;
+        alert(data);
+    }
+
+    // Change Kategorie
+    $('#inputKategorie').on('change', function () {
+        currKategorieID = this.value;
+        currKategorieText = $("#inputKategorie option:selected").text();
+
+        alert(currKategorieID + currKategorieText);
+    });
+
+    // Change Betrag
+    function changeBetrag(data) {
+        currBetrag = data;
+        alert(data);
+    }
+
+    // Change Kommentar
+    function changeBezeichnung(data) {
+        currBezeichnung = data;
+        alert(currBezeichnung);
+    }
+
+    //Change Mode
+    function toggleMode() {
+        if (vartoggleMenue == "0") {
+
+            //navbars
+            $('#id_navbar').removeClass("navbar navbar-dark bg-danger").addClass("navbar navbar-dark bg-success");
+            $('#headercontent').removeClass("bg-danger p-4").addClass("bg-success p-4");
+
+            $('#footer').removeClass("navbar fixed-bottom navbar-expand-sm navbar-success bg-danger").addClass("navbar fixed-bottom navbar-expand-sm navbar-success bg-success");
+            vartoggleMenue = "1";
+
+            //Buttons
+            $('#btn_datum').removeClass("btn btn-danger").addClass("btn btn-success");
+            $('#btn_kategorie').removeClass("btn btn-danger").addClass("btn btn-success");
+            $('#btn_betrag').removeClass("btn btn-danger").addClass("btn btn-success");
+            $('#id_info_betrag').removeClass("btn btn-danger short").addClass("btn btn-success short");
+            $('#btn_bezeichnung').removeClass("btn btn-danger").addClass("btn btn-success");
+            $('#id_btn_buchen').removeClass("btn btn-danger btn-lg").addClass("btn btn-success btn-lg");
+            $('#btn_modal_buchen').removeClass("btn btn-danger").addClass("btn btn-success");
+
+        } else {
+            //navbars
+            $('#id_navbar').removeClass("navbar navbar-dark bg-success").addClass("navbar navbar-dark bg-danger");
+            $('#headercontent').removeClass("bg-success p-4").addClass("bg-danger p-4");
+            $('#footer').removeClass("navbar fixed-bottom navbar-expand-sm navbar-success bg-success").addClass("navbar fixed-bottom navbar-expand-sm navbar-success bg-danger");
+            vartoggleMenue = "0";
+
+            //Buttons
+
+            $('#btn_datum').removeClass("btn btn-success").addClass("btn btn-danger");
+            $('#btn_kategorie').removeClass("btn btn-success").addClass("btn btn-danger");
+            $('#btn_betrag').removeClass("btn btn-success").addClass("btn btn-danger");
+            $('#id_info_betrag').removeClass("btn btn-success short").addClass("btn btn-danger short");
+            $('#btn_bezeichnung').removeClass("btn btn-success").addClass("btn btn-danger");
+            $('#id_btn_buchen').removeClass("btn btn-success btn-lg").addClass("btn btn-danger btn-lg");
+            $('#btn_modal_buchen').removeClass("btn btn-success").addClass("btn btn-danger");
+
+        }
+
+    }
+    function check_buchung() {
+
+        $('#modal_date').html(currDate);
+        $('#modal_kategorie').html("ID: " + currKategorieID + "<br>Name: " + currKategorieText);
+        $('#modal_betrag').html(currBetrag + "€");
+        $('#modal_bezeichnung').html(currBezeichnung);
+
+    }
+
+
+    function buchen() {
+        $.ajax({
+            type: "post",
+            url: "transaction.php",
+            dataType: 'json',
+            data: {
+                'type': 'new',
+                'change_id': '1',
+                'category_id': '4',
+                'date': '2020-01-01',
+                'description': 'Hausrat',
+                'value': '12.99'
+            },
+            success: function () {
+                //Do Something
+            }
+        });
+
+
+    }
+
+    function getCategories() {
+
+        $.ajax({
+            type: "post",
+            url: "callProcedure.php",
+            dataType: 'json',
+            data: { 'postprocedure': 'GetAllCategories' },
+            success: function (data) {
+                console.log(data);
+                // <option value="1">Fahrrad</option>
+
+                for (i = 0; i < data.length ; i++) {
+                    $("#inputKategorie").append("<option value=" + data[i].id + ">" + data[i].name + "</option>");
+                }
+            }
+        });
+    }
+</script>

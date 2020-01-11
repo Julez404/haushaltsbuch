@@ -124,37 +124,36 @@
 
             <a href="#BuchungSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Buchung</a>
             <ul class="collapse" id="BuchungSubmenu">
-                <div class="nav flex-column nav-pills" role="tablist"  onclick="toggleSidebar()" aria-orientation="vertical">
-                    <a class="nav-link active" onclick="$('#DIV_Buchung_NEU').load('/html/Buchung/Neu.html');" data-toggle="pill" href="#id_DIV_Buchung_NEU">Neu</a>
-                    <a class="nav-link" onclick="$('#DIV_Buchung_PLANEN').load('/html/Buchung/Planen.html');" data-toggle="pill" href="#id_DIV_Buchung_PLANEN">Planen</a>
-                    <a class="nav-link" onclick="$('#DIV_Buchung_BEARBEITEN').load('/html/Buchung/Bearbeiten.html');" data-toggle="pill" href="#id_DIV_Buchung_BEARBEITEN">Bearbeiten</a>
+                <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                    <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">Home</a>
+                    <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">Profile</a>
+                    <a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab" aria-controls="v-pills-messages" aria-selected="false">Messages</a>
+                    <a class="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab" aria-controls="v-pills-settings" aria-selected="false">Settings</a>
                 </div>
             </ul>
+
             <hr />
-
-
-            <a href="#AuswertungSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Auswertung</a>
-            <ul class="collapse" id="AuswertungSubmenu">
-                <div class="nav flex-column nav-pills" role="tablist"  onclick="toggleSidebar()" aria-orientation="vertical">
-                    <a class="nav-link" onclick="$('#DIV_Auswertung_NEU').load('/html/Auswertung/Neu.html');" data-toggle="pill" href="#id_DIV_Auswertung_NEU">Neu</a>
-                    <a class="nav-link" onclick="$('#DIV_Auswertung_PLANEN').load('/html/Auswertung/Planen.html');" data-toggle="pill" href="#id_DIV_Auswertung_PLANEN">Planen</a>
-                    <a class="nav-link" onclick="$('#DIV_Auswertung_BEARBEITEN').load('/html/Auswertung/Bearbeiten.html');" data-toggle="pill" href="#id_DIV_Auswertung_BEARBEITEN">Bearbeiten</a>
-                </div>
+            <a href="#AuswertungSubmenue" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Auswertungen</a>
+            <ul class="collapse" id="AuswertungSubmenue">
+                <li><a href="#DIV_Auswertung">Neu </a></li>
+                <li><a href="#">Planen</a></li>
+                <li><a href="#">Bearbeiten</a></li>
             </ul>
             <hr />
-
-
             <li><a href="#">Einstellungen</a></li>
             <li><a href="#">Hilfe & Feedback</a></li>
 
         </ul>
     </div>
 
+
+
+
     <div class="content_main" style="text-align: center;">
         <div class="pos-f-t">
             <nav id="id_navbar" class="navbar navbar-dark bg-danger" style="color: white;">
 
-                <button class="btn" onclick="toggleSidebar()"><span style="font-size: 20px;"><i class="fas fa-bars"></i></span></button>
+                <button class="btn" onclick="$('#sidebar').toggleClass('visible')"><span style="font-size: 20px;"><i class="fas fa-bars"></i></span></button>
                 <h4>Haushaltsbuch</h4>
                 <!-- Rounded switch -->
                 <label class="switch">
@@ -168,53 +167,32 @@
 
 
 
+        <div class="tab-content" id="v-pills-tabContent">
+            <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
 
-        <!-- Content -->
-        <div class="tab-content">
-            <div class="tab-pane fade show active" id="id_DIV_Buchung_NEU" aria-labelledby="v-pills-home-tab">
+
+
+
                 <div id="DIV_Buchung_NEU">
-                </div>
-            </div>
-            <div class="tab-pane fade" id="id_DIV_Buchung_BEARBEITEN" aria-labelledby="v-pills-profile-tab">
-                <div id="DIV_Buchung_BEARBEITEN">
-                </div>
-            </div>
-            <div class="tab-pane fade" id="id_DIV_Buchung_PLANEN" aria-labelledby="v-pills-profile-tab">
-                <div id="DIV_Buchung_PLANEN">
-                </div>
-            </div>
 
-
-            <div class="tab-pane fade" id="id_DIV_Auswertung_NEU" aria-labelledby="v-pills-profile-tab">
-                <div id="DIV_Auswertung_NEU">
-                </div>
             </div>
-            <div class="tab-pane fade" id="id_DIV_Auswertung_BEARBEITEN" aria-labelledby="v-pills-profile-tab">
-                <div id="DIV_Auswertung_BEARBEITEN">
-                </div>
+            <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
+                <div id="DIV_Auswertung">
             </div>
-            <div class="tab-pane fade" id="id_DIV_Auswertung_PLANEN" aria-labelledby="v-pills-profile-tab">
-                <div id="DIV_Auswertung_PLANEN">
-                </div>
             </div>
+            <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">.C..</div>
+            <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">.D..</div>
         </div>
+
+
+
+
 
 
         <!-- Footer-->
         <nav id="footer" style="margin-bottom: 0px;" class="navbar fixed-bottom navbar-expand-sm navbar-danger bg-danger">
         </nav>
-
-
         <!-- End Content -->
-        <!-- Modal -->
-        <div id="DIV_Buchung_MODAL">
-        </div>
-    </div>
-
-
-
-
-
 </body>
 
 </html>
@@ -223,15 +201,24 @@
 
 <script>
 
+    var active = "Sidebar_Buchung_Neu";
+    $('#Import_Standbild').show();
+    $('#Import_Animationen').hide();
+    $('#Import_Snake').hide();
+    $('#Import_Uhr').hide();
 
-    var vartoggleMenue = "0";
+    function activeMenue(_id) {
+        alert(_id);
+        h_var1 = active.split("_");
+        h_var2 = _id.split("_");
 
-    //Document Ready
+        $('#' + active).addClass('inactive').removeClass('active');
+        h_var1 = h_var1[1];
+        $('#Import_' + h_var1).hide();
 
-    function toggleSidebar() {
-        $('#sidebar').toggleClass('visible')
+        $('#' + _id).addClass('active').removeClass('inactive');
+        h_var2 = h_var2[1];
+        $('#Import_' + h_var2).fadeIn(500);
+        active = _id;
     }
-
-  
- 
 </script>
