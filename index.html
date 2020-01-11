@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="css/bootstrap/bootstrap-4.3.1-dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/fontawesome/css/all.css">
     <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 
 
@@ -92,9 +93,6 @@
                 border-radius: 50%;
             }
 
-
-
-
         body {
             // text-align: center;
             justify-content: center;
@@ -102,33 +100,26 @@
             // background: #FAD9DC;
         }
 
-        .btn.btn-danger{
-           width:150px;
-        }
-         .btn.btn-danger.short{
-           width:50px;
+        .btn.btn-danger {
+            width: 160px;
         }
 
-          .btn.btn-success{
-           width:150px;
+            .btn.btn-danger.short {
+                width: 50px;
+            }
+
+        .btn.btn-success {
+            width: 150px;
         }
-         .btn.btn-success.short{
-           width:50px;
-        }
+
+            .btn.btn-success.short {
+                width: 50px;
+            }
     </style>
-    <!-- Start Content -->
-
-
     <div class="content_main" style="text-align: center;">
         <div class="pos-f-t">
-            <div class="collapse" id="navbarToggleExternalContent">
-                <div id="headercontent" class="bg-danger p-4">
-                    <h5 class="text-white h4">Collapsed content</h5>
-                    <span class="text-white">Toggleable via the navbar brand.</span>
-                </div>
-            </div>
             <nav id="id_navbar" class="navbar navbar-dark bg-danger" style="color: white;">
-                <button class="navbar-toggler " style="color: white; border: 1px solid;" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+                <button class="navbar-toggler" id="" style="color: white; border: 1px solid;" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span style="font-size: larger;"><i class="fas fa-bars"></i></span>
                 </button>
                 <h5>Haushaltsbuch</h5>
@@ -187,9 +178,9 @@
                 <div class="input-group-prepend">
                     <button type="button" id="btn_betrag" class="btn btn-danger">Betrag</button>
                 </div>
-                <input type="number" class="form-control" id="inputBetrag"  onchange="changeBetrag(this.value);">
+                <input type="number" class="form-control" id="inputBetrag" onchange="changeBetrag(this.value);">
                 <div class="input-group-append">
-                    <button type="button" id="id_info_betrag"class="btn btn-danger short">€</button>
+                    <button type="button" id="id_info_betrag" class="btn btn-danger short">€</button>
                 </div>
             </div>
             <br />
@@ -204,7 +195,7 @@
             <br />
             <br />
             <br />
-            <br />
+
             <br />
             <br />
             <br />
@@ -216,7 +207,7 @@
         <br>
     </div>
     <!-- Footer-->
-    <nav id="footer" class="navbar fixed-bottom navbar-expand-sm navbar-danger bg-danger">
+    <nav id="footer" style="margin-bottom: 0px;" class="navbar fixed-bottom navbar-expand-sm navbar-danger bg-danger">
     </nav>
 
 
@@ -270,8 +261,8 @@
     //Variables
 
     var currDate = "";
-    var currBetrag="";
-    var currBezeichnung="";
+    var currBetrag = "";
+    var currBezeichnung = "";
     var currKategorieID = "";
     var currKategorieText = "";
     var vartoggleMenue = "0";
@@ -289,17 +280,17 @@
         //     document.write(today);
         currDate = yyyy + '-' + mm + '-' + dd;
         $('#inputDate').val(currDate);
-/*
-        var modal_date = document.getElementsByTagName('p')[0];
-        modal_date.innerHTML = currDate;
-   */
-   });
+        /*
+                var modal_date = document.getElementsByTagName('p')[0];
+                modal_date.innerHTML = currDate;
+           */
+    });
 
 
 
     //Change Datum
     function changeDate(data) {
-        currDate=this.value;
+        currDate = this.value;
         alert(data);
     }
 
@@ -308,7 +299,7 @@
         currKategorieID = this.value;
         currKategorieText = $("#inputKategorie option:selected").text();
 
-        alert( currKategorieID +currKategorieText );
+        alert(currKategorieID + currKategorieText);
     });
 
     // Change Betrag
@@ -367,13 +358,14 @@
 
         $('#modal_date').html(currDate);
         $('#modal_kategorie').html("ID: " + currKategorieID + "<br>Name: " + currKategorieText);
-        $('#modal_betrag').html(currBetrag+"€");
+        $('#modal_betrag').html(currBetrag + "€");
         $('#modal_bezeichnung').html(currBezeichnung);
-      
-        }
+
+    }
 
 
     function buchen() {
         alert("noch niiiicht");
     }
+
 </script>
