@@ -83,6 +83,10 @@ a:focus {
     padding: 10px;
 }
 
+#sidebar ul a {
+    font-size:1.1em;
+}
+
 #sidebar ul li a {
     padding: 10px;
     font-size: 1.1em;
@@ -94,11 +98,6 @@ a:focus {
     background: #fff;
 }
 
-#sidebar ul li.active>a,
-a[aria-expanded="true"] {
-    color: #fff;
-    background: #6d7fcc;
-}
 
 a[data-toggle="collapse"] {
     position: relative;
@@ -112,10 +111,10 @@ a[data-toggle="collapse"] {
     transform: translateY(-50%);
 }
 
-ul ul a {
-    font-size: 0.9em !important;
-    padding-left: 30px !important;
-    background: #6d7fcc;
+#sidebar ul ul a {
+    font-size: 16px !important;
+  
+    background: #fff;
 }
 
 ul.CTAs {
