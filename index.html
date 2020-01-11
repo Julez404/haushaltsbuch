@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="css/fontawesome/css/all.css">
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/sidebar.css">
 </head>
 
 
@@ -116,13 +117,37 @@
                 width: 50px;
             }
     </style>
+
+
+
+
+
+    <div id="sidebar">
+        <h3>Übersicht<i class="fa fa-times" style="margin-left: 50px;" onclick="$('#sidebar').toggleClass('visible')"></i></h3>
+        <ul>
+            <li><a class="active" href="#">100</a></li>
+            <li><a href="#">101</a></li>
+            <li><a href="#">102</a></li>
+            <li><a href="#">103</a></li>
+            <li><a href="#">104</a></li>
+            <li><a href="#">105</a></li>
+            <li><a href="#">106</a></li>
+
+
+        </ul>
+       
+    </div>
+
+
+  
+
+
     <div class="content_main" style="text-align: center;">
         <div class="pos-f-t">
             <nav id="id_navbar" class="navbar navbar-dark bg-danger" style="color: white;">
-                <button class="navbar-toggler" id="" style="color: white; border: 1px solid;" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span style="font-size: larger;"><i class="fas fa-bars"></i></span>
-                </button>
-                <h5>Haushaltsbuch</h5>
+
+                <button class="btn" onclick="$('#sidebar').toggleClass('visible')"><span style="font-size: 20px;"><i class="fas fa-bars"></i></span></button>
+                <h4>Haushaltsbuch</h4>
                 <!-- Rounded switch -->
                 <label class="switch">
                     <input type="checkbox" onclick="toggleMode();">
@@ -178,7 +203,7 @@
                 <div class="input-group-prepend">
                     <button type="button" id="btn_betrag" class="btn btn-danger">Betrag</button>
                 </div>
-                <input type="number" class="form-control" id="inputBetrag" onchange="changeBetrag(this.value);">
+                <input type="number" class="form-control" id="inputBetrag" onchange="changeBetrag(this.value);" placeholder="420,69">
                 <div class="input-group-append">
                     <button type="button" id="id_info_betrag" class="btn btn-danger short">€</button>
                 </div>
@@ -188,7 +213,7 @@
                 <div class="input-group-prepend">
                     <button type="button" id="btn_bezeichnung" class="btn btn-danger">Bezeichnung</button>
                 </div>
-                <input type="text" class="form-control" id="inputKommentar" onchange="changeBezeichnung(this.value);">
+                <input type="text" class="form-control" id="inputKommentar" onchange="changeBezeichnung(this.value);" placeholder="Döner sein Vater">
             </div>
             <br />
             <br />
