@@ -12,3 +12,4 @@ Code | Meaning
 --- | ---
 250 | Connection to SQL Server failed
 251 | StoredProcedure does not exist
+252 | Preparation of Statement failed
