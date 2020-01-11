@@ -8,7 +8,7 @@
   background-color: white;
   position: fixed;
   height: 100%;
-    left:-850px;
+    left:-300px;
   overflow: auto;
   display: block;
   transition:left 0.3s linear;
