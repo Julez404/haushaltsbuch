@@ -38,7 +38,7 @@
     <br />
     <br />
     <br />
-    <button id="id_btn_buchen" type="button" data-toggle="modal" data-target="#exampleModalCenter" class="btn btn-danger btn-lg" onclick="check_buchung();">Buchön!</button>
+    <button id="id_btn_buchen" type="button" data-toggle="modal" data-target="#exampleModalCenter" class="btn btn-danger btn-lg" onclick="check_buchung();">Prüfen</button>
 </div>
 <br>
 <br>
@@ -160,14 +160,14 @@
     }
 
 
-    function buchen() {
+    function buchenNEU() {
         $.ajax({
             type: "post",
             url: "transaction.php",
             dataType: 'json',
             data: {
                 'type': 'new',
-                'change_id': '1',
+                'change_id': '',
                 'category_id': '4',
                 'date': '2020-01-01',
                 'description': 'Hausrat',
