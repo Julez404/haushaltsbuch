@@ -101,6 +101,20 @@
             align-items: center;
             // background: #FAD9DC;
         }
+
+        .btn.btn-danger{
+           width:150px;
+        }
+         .btn.btn-danger.short{
+           width:50px;
+        }
+
+          .btn.btn-success{
+           width:150px;
+        }
+         .btn.btn-success.short{
+           width:50px;
+        }
     </style>
     <!-- Start Content -->
 
@@ -117,6 +131,7 @@
                 <button class="navbar-toggler " style="color: white; border: 1px solid;" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span style="font-size: larger;"><i class="fas fa-bars"></i></span>
                 </button>
+                <h5>Haushaltsbuch</h5>
                 <!-- Rounded switch -->
                 <label class="switch">
                     <input type="checkbox" onclick="toggleMode();">
@@ -172,8 +187,10 @@
                 <div class="input-group-prepend">
                     <button type="button" id="btn_betrag" class="btn btn-danger">Betrag</button>
                 </div>
-                <input type="number" class="form-control" id="inputBetrag" aria-label="Amount (to the nearest dollar)" onchange="changeBetrag(this.value);">
-
+                <input type="number" class="form-control" id="inputBetrag"  onchange="changeBetrag(this.value);">
+                <div class="input-group-append">
+                    <button type="button" id="id_info_betrag"class="btn btn-danger short">€</button>
+                </div>
             </div>
             <br />
             <div class="input-group input-group-lg">
@@ -321,11 +338,10 @@
             $('#btn_datum').removeClass("btn btn-danger").addClass("btn btn-success");
             $('#btn_kategorie').removeClass("btn btn-danger").addClass("btn btn-success");
             $('#btn_betrag').removeClass("btn btn-danger").addClass("btn btn-success");
+            $('#id_info_betrag').removeClass("btn btn-danger short").addClass("btn btn-success short");
             $('#btn_bezeichnung').removeClass("btn btn-danger").addClass("btn btn-success");
             $('#id_btn_buchen').removeClass("btn btn-danger btn-lg").addClass("btn btn-success btn-lg");
             $('#btn_modal_buchen').removeClass("btn btn-danger").addClass("btn btn-success");
-
-            //          $('body').css('background-color', '#E0F8E6');
 
         } else {
             //navbars
@@ -339,14 +355,11 @@
             $('#btn_datum').removeClass("btn btn-success").addClass("btn btn-danger");
             $('#btn_kategorie').removeClass("btn btn-success").addClass("btn btn-danger");
             $('#btn_betrag').removeClass("btn btn-success").addClass("btn btn-danger");
+            $('#id_info_betrag').removeClass("btn btn-success short").addClass("btn btn-danger short");
             $('#btn_bezeichnung').removeClass("btn btn-success").addClass("btn btn-danger");
             $('#id_btn_buchen').removeClass("btn btn-success btn-lg").addClass("btn btn-danger btn-lg");
             $('#btn_modal_buchen').removeClass("btn btn-success").addClass("btn btn-danger");
 
-
-            
-
-            //         $('body').css('background-color', '#FAD9DC');
         }
 
     }
