@@ -50,7 +50,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background-color: #28A745;
+            background-color: #DC3545;
             -webkit-transition: .4s;
             transition: .4s;
         }
@@ -68,7 +68,7 @@
             }
 
         input:checked + .slider {
-            background-color: #DC3545;
+            background-color: #28A745;
         }
 
         input:focus + .slider {
@@ -99,12 +99,8 @@
             // text-align: center;
             justify-content: center;
             align-items: center;
-            background: #E0F8E6;
+            // background: #FAD9DC;
         }
-
-
-
-
     </style>
     <!-- Start Content -->
 
@@ -112,12 +108,12 @@
     <div class="content_main" style="text-align: center;">
         <div class="pos-f-t">
             <div class="collapse" id="navbarToggleExternalContent">
-                <div id="headercontent" class="bg-success p-4">
+                <div id="headercontent" class="bg-danger p-4">
                     <h5 class="text-white h4">Collapsed content</h5>
                     <span class="text-white">Toggleable via the navbar brand.</span>
                 </div>
             </div>
-            <nav id="id_navbar" class="navbar navbar-dark bg-success" style="color: white;">
+            <nav id="id_navbar" class="navbar navbar-dark bg-danger" style="color: white;">
                 <button class="navbar-toggler " style="color: white; border: 1px solid;" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span style="font-size: larger;"><i class="fas fa-bars"></i></span>
                 </button>
@@ -131,18 +127,18 @@
         <br />
         <br />
 
-            <!-- SAFE -->
+        <!-- SAFE -->
+        <div class="container">
             <div class="input-group input-group-lg">
                 <div class="input-group-prepend">
-                    <button type="button" class="btn btn-success">Datum</button>
+                    <button type="button" id="btn_datum" class="btn btn-danger">Datum</button>
                 </div>
                 <input type="date" class="form-control" id="inputDate" placeholder="JJJJ/MM/TT" onchange="changeDate(this.value);">
             </div>
             <br />
-            <br />
             <div class="input-group input-group-lg">
                 <div class="input-group-prepend">
-                    <button type="button" class="btn btn-success">Kategorie</button>
+                    <button type="button" id="btn_kategorie" class="btn btn-danger">Kategorie</button>
                 </div>
                 <select class="custom-select" id="inputKategorie">
                     <option selected>Auswählen...</option>
@@ -172,10 +168,9 @@
                 </select>
             </div>
             <br />
-       
             <div class="input-group input-group-lg">
                 <div class="input-group-prepend">
-                    <button type="button" class="btn btn-success">Betrag</button>
+                    <button type="button" id="btn_betrag" class="btn btn-danger">Betrag</button>
                 </div>
                 <input type="number" class="form-control" id="inputBetrag" aria-label="Amount (to the nearest dollar)" onchange="changeBetrag(this.value);">
 
@@ -183,25 +178,31 @@
             <br />
             <div class="input-group input-group-lg">
                 <div class="input-group-prepend">
-                    <button type="button" class="btn btn-success">Bemerkung</button>
+                    <button type="button" id="btn_bezeichnung" class="btn btn-danger">Bezeichnung</button>
                 </div>
-                <textarea class="form-control" id="inputKommentar" aria-label="Bemerkung" onchange="changeKommentar(this.value);"></textarea>
+                <input type="text" class="form-control" id="inputKommentar"  onchange="changeKommentar(this.value);">
             </div>
             <br />
-
             <br />
-
-            <button id="id_btn_buchen" type="button" class="btn btn-success btn-lg" onclick="buchen();">Buchön!</button>
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <button id="id_btn_buchen" type="button" class="btn btn-danger btn-lg" onclick="buchen();">Buchön!</button>
 
         </div>
         <br>
         <br>
-
-        <!-- Footer-->
-        <nav id="footer" class="navbar fixed-bottom navbar-expand-sm navbar-success bg-success">
-        </nav>
-
     </div>
+    <!-- Footer-->
+    <nav id="footer" class="navbar fixed-bottom navbar-expand-sm navbar-danger bg-danger">
+    </nav>
+
+
     <!-- End Content -->
 
 </body>
@@ -263,20 +264,39 @@
     //Change Mode
     function toggleMode() {
         if (vartoggleMenue == "0") {
-            $('#id_navbar').removeClass("navbar navbar-dark bg-success").addClass("navbar navbar-dark bg-danger");
-            $('#headercontent').removeClass("bg-success p-4").addClass("bg-danger p-4");
-            $('#id_btn_buchen').removeClass("btn btn-success btn-lg").addClass("btn btn-danger btn-lg");
-            $('#footer').removeClass("navbar fixed-bottom navbar-expand-sm navbar-success bg-success").addClass("navbar fixed-bottom navbar-expand-sm navbar-success bg-danger");
-            vartoggleMenue = "1";
-            $('body').css('background-color', '#FAD9DC');
 
-        } else {
+            //navbars
             $('#id_navbar').removeClass("navbar navbar-dark bg-danger").addClass("navbar navbar-dark bg-success");
             $('#headercontent').removeClass("bg-danger p-4").addClass("bg-success p-4");
-            $('#id_btn_buchen').removeClass("btn btn-danger btn-lg").addClass("btn btn-success btn-lg");
+
             $('#footer').removeClass("navbar fixed-bottom navbar-expand-sm navbar-success bg-danger").addClass("navbar fixed-bottom navbar-expand-sm navbar-success bg-success");
+            vartoggleMenue = "1";
+
+            //Buttons
+            $('#btn_datum').removeClass("btn btn-danger").addClass("btn btn-success");
+            $('#btn_kategorie').removeClass("btn btn-danger").addClass("btn btn-success");
+            $('#btn_betrag').removeClass("btn btn-danger").addClass("btn btn-success");
+            $('#btn_bezeichnung').removeClass("btn btn-danger").addClass("btn btn-success");
+            $('#id_btn_buchen').removeClass("btn btn-danger btn-lg").addClass("btn btn-success btn-lg");
+
+            //          $('body').css('background-color', '#E0F8E6');
+
+        } else {
+            //navbars
+            $('#id_navbar').removeClass("navbar navbar-dark bg-success").addClass("navbar navbar-dark bg-danger");
+            $('#headercontent').removeClass("bg-success p-4").addClass("bg-danger p-4");
+            $('#footer').removeClass("navbar fixed-bottom navbar-expand-sm navbar-success bg-success").addClass("navbar fixed-bottom navbar-expand-sm navbar-success bg-danger");
             vartoggleMenue = "0";
-            $('body').css('background-color', '#E0F8E6');
+
+            //Buttons
+
+            $('#btn_datum').removeClass("btn btn-success").addClass("btn btn-danger");
+            $('#btn_kategorie').removeClass("btn btn-success").addClass("btn btn-danger");
+            $('#btn_betrag').removeClass("btn btn-success").addClass("btn btn-danger");
+            $('#btn_bezeichnung').removeClass("btn btn-success").addClass("btn btn-danger");
+            $('#id_btn_buchen').removeClass("btn btn-success btn-lg").addClass("btn btn-danger btn-lg");
+
+            //         $('body').css('background-color', '#FAD9DC');
         }
 
     }
