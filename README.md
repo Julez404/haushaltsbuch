@@ -10,6 +10,6 @@ GetAllEntries   |  Returns table Entries
 # HTTP Error Codes
 Code | Meaning
 --- | ---
-250 | Connection to SQL Server failed
-251 | StoredProcedure does not exist
-252 | Preparation of Statement failed
+550 | Connection to SQL Server failed
+551 | StoredProcedure does not exist
+552 | Preparation of Statement failed
