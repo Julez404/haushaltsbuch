@@ -2,7 +2,7 @@
 <html>
 <head>
 
-    <meta name="viewport" content="width=device-width,user-scalable=" no" , initial-scale=1">
+    <meta name="viewport" content="width=device-width,user-scalable=" no" , initial-scale="1">
     <title>Haushaltsbuch</title>
 
     <!-- JavaScrpipt -->
@@ -180,7 +180,7 @@
                 <div class="input-group-prepend">
                     <button type="button" id="btn_bezeichnung" class="btn btn-danger">Bezeichnung</button>
                 </div>
-                <input type="text" class="form-control" id="inputKommentar"  onchange="changeKommentar(this.value);">
+                <input type="text" class="form-control" id="inputKommentar" onchange="changeBezeichnung(this.value);">
             </div>
             <br />
             <br />
@@ -192,7 +192,7 @@
             <br />
             <br />
             <br />
-            <button id="id_btn_buchen" type="button" class="btn btn-danger btn-lg" onclick="buchen();">Buchön!</button>
+            <button id="id_btn_buchen" type="button" data-toggle="modal" data-target="#exampleModalCenter" class="btn btn-danger btn-lg" onclick="check_buchung();">Buchön!</button>
 
         </div>
         <br>
@@ -204,7 +204,45 @@
 
 
     <!-- End Content -->
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title" id="exampleModalLongTitle">Daten überprüfen</h3>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
 
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col">
+                            <h5>Datum</h5>
+                            <p id="modal_date"></p>
+                            <hr>
+                            <h5>Kategorie</h5>
+                            <p id="modal_kategorie"></p>
+                        </div>
+
+
+                        <div class="col">
+                            <h5>Betrag</h5>
+                            <p id="modal_betrag"></p>
+                            <hr>
+                            <h5>Bezeichnung</h5>
+                            <p id="modal_bezeichnung"></p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" id="btn_modal_buchen" class="btn btn-danger">Buchen</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Abbrechen</button>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 
 </html>
@@ -215,6 +253,10 @@
     //Variables
 
     var currDate = "";
+    var currBetrag="";
+    var currBezeichnung="";
+    var currKategorieID = "";
+    var currKategorieText = "";
     var vartoggleMenue = "0";
 
     //Document Ready
@@ -230,35 +272,38 @@
         //     document.write(today);
         currDate = yyyy + '-' + mm + '-' + dd;
         $('#inputDate').val(currDate);
-        $('#card_date').val(currDate);
-
-        var h1 = document.getElementsByTagName('h1')[0];
-        h1.innerHTML = currDate;
-    });
+/*
+        var modal_date = document.getElementsByTagName('p')[0];
+        modal_date.innerHTML = currDate;
+   */
+   });
 
 
 
     //Change Datum
     function changeDate(data) {
-
+        currDate=this.value;
         alert(data);
     }
 
     // Change Kategorie
     $('#inputKategorie').on('change', function () {
-        alert(this.value);
+        currKategorieID = this.value;
+        currKategorieText = $("#inputKategorie option:selected").text();
+
+        alert( currKategorieID +currKategorieText );
     });
 
     // Change Betrag
     function changeBetrag(data) {
-
+        currBetrag = data;
         alert(data);
     }
 
     // Change Kommentar
-    function changeKommentar(data) {
-
-        alert(data);
+    function changeBezeichnung(data) {
+        currBezeichnung = data;
+        alert(currBezeichnung);
     }
 
     //Change Mode
@@ -278,6 +323,7 @@
             $('#btn_betrag').removeClass("btn btn-danger").addClass("btn btn-success");
             $('#btn_bezeichnung').removeClass("btn btn-danger").addClass("btn btn-success");
             $('#id_btn_buchen').removeClass("btn btn-danger btn-lg").addClass("btn btn-success btn-lg");
+            $('#btn_modal_buchen').removeClass("btn btn-danger").addClass("btn btn-success");
 
             //          $('body').css('background-color', '#E0F8E6');
 
@@ -295,11 +341,24 @@
             $('#btn_betrag').removeClass("btn btn-success").addClass("btn btn-danger");
             $('#btn_bezeichnung').removeClass("btn btn-success").addClass("btn btn-danger");
             $('#id_btn_buchen').removeClass("btn btn-success btn-lg").addClass("btn btn-danger btn-lg");
+            $('#btn_modal_buchen').removeClass("btn btn-success").addClass("btn btn-danger");
+
+
+            
 
             //         $('body').css('background-color', '#FAD9DC');
         }
 
     }
+    function check_buchung() {
+
+        $('#modal_date').html(currDate);
+        $('#modal_kategorie').html("ID: " + currKategorieID + "<br>Name: " + currKategorieText);
+        $('#modal_betrag').html(currBetrag+"€");
+        $('#modal_bezeichnung').html(currBezeichnung);
+      
+        }
+
 
     function buchen() {
         alert("noch niiiicht");
