@@ -1,34 +1,68 @@
 <?php
 
+$procedure = $_POST['postprocedure'];
+$date =  $_POST['date'];
+
 $dbname = "finance";
 // Create connection
 $sql = new mysqli(ini_get("mysqli.default_host"), ini_get("mysqli.default_user"),ini_get("mysqli.default_pw"), $dbname);
 
 // Check connection
-/*
-if ($conn->connect_error)
+if ($sql->connect_error)
 {
-	die("Connection failed: " . $conn->connect_error);
-}
-*/
-
-//Call Query
-$result = $sql->query("CALL GetAllCategories");
-
-//Save response in Array
-$response = array();
-while($row = $result->fetch_array(MYSQLI_ASSOC))
-{
-	$response[] = $row;
+	http_response_code(550);
+	die("Connection failed: " . $sql->connect_error);
 }
 
-//Echo to Javyscript
-header('Content-type: application/json');
-echo json_encode($response);
+//Check for Procedure with or without parameters
+if ($date == '')
+{
+	//Call Query
+	$result = $sql->query("CALL $procedure");
+	if ($result == false)
+	{
+		http_response_code(551);
+		die("Query failed!");
+	}
 
-//Close connections
-$result->close();
-$sql->close();
-exit();
+	//Save response in Array
+	$response = array();
+	while($row = $result->fetch_array(MYSQLI_ASSOC))
+	{
+		$response[] = $row;
+	}
 
+	//Echo to Javyscript
+	header('Content-type: application/json');
+	echo json_encode($response);
+	exit();
+}
+
+if($date != '')
+{
+	//Call Query
+	$stmt = $sql->prepare("CALL $procedure(?)");
+	if ($stmt == false)
+	{
+		http_response_code(554);
+		die("Statement could not be Assigned!");
+	}
+
+	//Bind Variable
+	$stmt->bind_param("s",$date);
+	$stmt->execute();
+
+	//Save response in Array
+	$result = $stmt->get_result();
+	$response = array();
+	while($row = $result->fetch_array(MYSQLI_ASSOC))
+	{
+		$response[] = $row;
+	}
+
+	//Echo to Javyscript
+	header('Content-type: application/json');
+	echo json_encode($response);
+	exit();
+}
 ?>
