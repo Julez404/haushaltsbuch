@@ -37,3 +37,29 @@
         </div>
     </div>
 </div>
+
+<script>
+
+    function buchenNEU(){
+        alert("buche");
+        $.ajax({
+            type: "post",
+            url: "transaction.php",
+            dataType: 'json',
+            data: {
+                'type': 'new',
+                'change_id': '',
+                'category_id': '4',
+                'date': '2020-01-01',
+                'description': 'Hausrat',
+                'value': '12.99'
+            },
+            success: function () {
+                //Do Something
+            }
+        });
+
+
+    }
+</script>
+  
