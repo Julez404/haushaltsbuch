@@ -1,0 +1,193 @@
+﻿    <!-- Input Fields -->
+
+<div class="input-group input-group-lg">
+    <div class="input-group-prepend">
+        <button type="button" id="FILTERbtn_datum" class="btn btn-danger">Datum</button>
+    </div>
+    <input type="date" class="form-control" id="FILTERinputDate" placeholder="JJJJ/MM/TT" onchange="changeDate(this.value);">
+</div>
+<br />
+<div class="input-group input-group-lg">
+    <div class="input-group-prepend">
+        <button type="button" id="FILTERbtn_datum1" class="btn btn-danger">Datum von</button>
+    </div>
+    <input type="date" class="form-control" id="FILTERinputDate1" placeholder="JJJJ/MM/TT" onchange="changeDate1(this.value);">
+</div>
+<div class="input-group input-group-lg">
+    <div class="input-group-prepend">
+        <button type="button" id="FILTERbtn_datum2" class="btn btn-danger">Datum bis</button>
+    </div>
+    <input type="date" class="form-control" id="FILTERinputDate2" placeholder="JJJJ/MM/TT" onchange="changeDate2(this.value);">
+</div>
+<br />
+<div class="input-group input-group-lg">
+    <div class="input-group-prepend">
+        <button type="button" id="FILTERbtn_kategorie" class="btn btn-danger">Kategorie</button>
+    </div>
+    <select class="custom-select" id="FILTERinputKategorie">
+        <option>Auswählen</option>
+    </select>
+</div>
+<br />
+<div class="input-group input-group-lg">
+    <div class="input-group-prepend">
+        <button type="button" id="FILTERbtn_betrag1" class="btn btn-danger">Betrag von</button>
+    </div>
+    <input type="number" class="form-control" id="FILTERinputBetrag1" onchange="FILTERchangeBetrag1(this.value);" placeholder="420,69">
+    <div class="input-group-append">
+        <button type="button" id="FILTERid_info_betrag1" class="btn btn-danger short">€</button>
+    </div>
+</div>
+<div class="input-group input-group-lg">
+    <div class="input-group-prepend">
+        <button type="button" id="FILTERbtn_betrag2" class="btn btn-danger">Betrag bis</button>
+    </div>
+    <input type="number" class="form-control" id="FILTERinputBetrag2" onchange="FILTERchangeBetrag2(this.value);" placeholder="420,69">
+    <div class="input-group-append">
+        <button type="button" id="FILTERid_info_betrag2" class="btn btn-danger short">€</button>
+    </div>
+</div>
+
+<br />
+<div class="input-group input-group-lg">
+    <div class="input-group-prepend">
+        <button type="button" id="FILTERgroup_by" class="btn btn-danger">Group By</button>
+    </div>
+    <input type="text" class="form-control" id="FILTERid_group_by" onchange="FILTERchangeGroupBy(this.value);" placeholder="Group by">
+</div>
+
+
+<br />
+<br />
+<br />
+<br />
+<br />
+<button id="FILTERid_btn_buchen" type="button" class="btn btn-success btn-lg" onclick="test();">Lesen!</button>
+<!-- Footer-->
+
+<script>
+
+    var FILTERcurrDate = "";
+    var FILTERcurrDate1 = "";
+    var FILTERcurrDate2 = "";
+    var FILTERcurrBetrag1 = "";
+    var FILTERcurrBetrag2 = "";
+    var FILTERcurrBezeichnung = "";
+    var FILTERcurrKategorieID = "";
+    var FILTERcurrKategorieText = "";
+    var FILTERvartoggleMenue = "0";
+    var FILTERcurrGroupBy = "";
+
+    //Change Datum
+    function changeDate(data) {
+        FILTERcurrDate = this.value;
+        alert(FILTERcurrDate);
+
+    }
+    function changeDate1(data) {
+        FILTERcurrDate1 = this.value;
+
+    }
+    function changeDate2(data) {
+        FILTERcurrDate2 = this.value;
+
+    }
+
+
+    // Change Kategorie
+    $('#FILTERinputKategorie').on('change', function () {
+        FILTERcurrKategorieID = this.value;
+        FILTERcurrKategorieText = $("#FILTERinputKategorie option:selected").text();
+
+
+    });
+
+    // Change Betrag
+    function FILTERchangeBetrag1(data) {
+        FILTERcurrBetrag1 = data;
+
+    }
+    // Change Betrag
+    function FILTERchangeBetrag2(data) {
+        FILTERcurrBetrag2 = data;
+
+    }
+
+    // Change Betrag
+    function FILTERchangeGroupBy(data) {
+        FILTERcurrGroupBy = data;
+
+
+    }
+
+
+    $(document).ready(function () {
+
+        getCategories();
+
+    });
+    function getCategories() {
+
+        $.ajax({
+            type: "post",
+            url: "callProcedure.php",
+            dataType: 'json',
+            data: { 'postprocedure': 'GetAllCategories' },
+            success: function (data) {
+                console.log(data);
+                // <option value="1">Fahrrad</option>
+
+                for (i = 0; i < data.length ; i++) {
+                    $("#FILTERinputKategorie").append("<option value=" + data[i].CATEGORY_ID + ">" + data[i].CATEGORY_NAME + "</option>");
+                }
+            }
+        });
+
+    }
+    function test() {
+/*
+        alert(FILTERcurrDate);
+        alert(FILTERcurrDate1);
+        alert(FILTERcurrDate2);
+        alert(FILTERcurrKategorieID);
+        alert(FILTERcurrKategorieText);
+        alert(FILTERcurrBetrag1);
+        alert(FILTERcurrBetrag2);
+        alert(FILTERcurrGroupBy);
+
+        */
+
+
+        $.ajax({
+            type: "post",
+            url: "getTransmissionStructured.php",
+            dataType: 'json',
+            data: {
+                'date': FILTERcurrDate,
+                'date_from':FILTERcurrDate1 ,
+                'date_to':FILTERcurrDate2,
+                'value':FILTERcurrBetrag1 ,
+                'value_compare':FILTERcurrBetrag2 , 
+                'category': FILTERcurrKategorieID,
+                'group_by': FILTERcurrGroupBy,
+                'sort_by': "",
+                'sort_order':""
+        },
+            success: function (data) {
+                console.log(data);
+                alert("Done");
+            }
+    });
+
+    Parameter:
+        'date'
+    'date_from'
+    'date_to'
+    'value' //FEHLT NOCH
+    'value_compare' //FEHLT NOCH
+    'sort_by'
+    'group_by'
+    'sort_order'
+    }
+
+</script>
