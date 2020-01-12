@@ -1,0 +1,41 @@
+﻿
+
+
+
+
+
+
+
+        <table id="example" class="display"></table>
+
+   
+
+
+<script>
+
+    $(document).ready(function () {
+        $.ajax({
+            type: "post",
+            url: "callProcedure.php",
+            dataType: 'json',
+            data: { 'postprocedure': 'GetAllTransactions' },
+            success: function (data1) {
+                console.log(data1);
+                // <option value="1">Fahrrad</option>
+                $('#example').DataTable({
+                    data: data1,
+                    columns: [
+
+                        { data: "TRANSACTION_DATE_SPENT", title: "Datum" },
+                        { data: "CATEGORY_NAME", title: "Kategorie" },
+                        { data: "TRANSACTION_VALUE", title: "Betrag" }
+
+                    ]
+                })
+            }
+
+        });
+    });
+
+
+</script>
