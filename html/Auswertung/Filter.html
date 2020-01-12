@@ -96,6 +96,9 @@
         FILTERcurrKategorieID = this.value;
         FILTERcurrKategorieText = $("#FILTERinputKategorie option:selected").text();
 
+        if (FILTERcurrKategorieText == "Auswählen") {
+            FILTERcurrKategorieID = "";
+        }
 
     });
 

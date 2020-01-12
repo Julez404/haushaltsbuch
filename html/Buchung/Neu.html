@@ -140,6 +140,9 @@
         currKategorieID = this.value;
         currKategorieText = $("#inputKategorie option:selected").text();
 
+        if (currKategorieID == "Auswählen") {
+            FILTERcurrKategorieID = "";
+        }
     });
 
     // Change Betrag
