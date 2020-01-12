@@ -70,7 +70,7 @@ if ($group_by == '' or $group_by == "TRANSACTION_CATEGORY_ID")
 // Register multiple restrictions
 $AND_REQUIRED = 0;
 // Subselect
-if ($date != '' or $date_to != '' or $date_from != '' or $value_from != '' or $value_to != '') //Every possibiliy
+if ($date != '' or $date_to != '' or $date_from != '' or $value_from != '' or $value_to != '' or $category_id != '') //Every possibiliy
 {
 	$query .= " WHERE";
 	if ($date != '')
