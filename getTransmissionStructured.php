@@ -8,8 +8,9 @@ $table = "TRANSACTION";
 $date = isset($_POST['date']) ? $_POST['date'] : '';
 $date_from = isset($_POST['date_to']) ? $_POST['date_from'] : '';
 $date_to = isset($_POST['date_to']) ? $_POST['date_to'] : '';
-$value = isset($_POST['value']) ? $_POST['value'] : '';
-$value_compare = isset($_POST['value_compare']) ? $_POST['value_compare'] : '';
+$category_id = isset($_POST['category_id']) ? $_POST['category_id'] : '';
+$value_from = isset($_POST['value_from']) ? $_POST['value_from'] : '';
+$value_to = isset($_POST['value_to']) ? $_POST['value_to'] : '';
 $sort_by = isset($_POST['sort_by']) ? $_POST['sort_by'] : '';
 $group_by = isset($_POST['group_by']) ? $_POST['group_by'] : '';
 $sort_order = isset($_POST['sort_order']) ? $_POST['sort_order'] : 'asc';
@@ -40,6 +41,10 @@ if ($date != '' and $date_from != '' and $date_to != '')
 	http_response_code(560);
 	die("To many Date arguments where provided" . $sql->connect_error);
 }
+if (($value_to != '' and $value_from == '') or ($value_to == '' and $value_from != '')) {
+	http_response_code(560);
+	die("Both or none VALUE arguments need to be passed"  . $sql->connect_error);
+}
 
 // Base query
 if ($group_by == '')
@@ -62,17 +67,39 @@ if ($group_by == '' or $group_by == "TRANSACTION_CATEGORY_ID")
 	$query .= " JOIN CATEGORY ON CATEGORY.CATEGORY_ID = TRANSACTION.TRANSACTION_CATEGORY_ID";
 }
 
+// Register multiple restrictions
+$AND_REQUIRED = 0;
 // Subselect
-if ($date != '' or $date_to != '' or $date_from != '') //Every possibiliy
+if ($date != '' or $date_to != '' or $date_from != '' or $value_from != '' or $value_to != '') //Every possibiliy
 {
 	$query .= " WHERE";
 	if ($date != '')
 	{
 		$query .= " TRANSACTION_DATE_SPENT = '$date'";
+		$AND_REQUIRED = 1;
 	}
 	if ($date_to != '' and $date_from != '')
 	{
 		$query .= " TRANSACTION_DATE_SPENT BETWEEN '$date_from' AND '$date_to'";
+		$AND_REQUIRED = 1;
+	}
+	if ($category_id != '')
+	{
+		if ($AND_REQUIRED == 1)
+		{
+			$query .= " AND";
+		}
+		$query .= " CATEGORY_ID = $category_id";
+		$AND_REQUIRED = 1;
+	}
+	if ($value_from != '' and $value_to != '')
+	{
+		if ($AND_REQUIRED == 1)
+		{
+			$query .= " AND";
+		}
+		$query .= " TRANSACTION_VALUE BETWEEN $value_from AND $value_to";
+		$AND_REQUIRED = 1;
 	}
 }
 
@@ -93,10 +120,6 @@ if ($sort_by != '')
 	//$query .= " $sort_by $sort_order";
 	$query .= " ORDER BY $sort_by $sort_order";
 }
-
-
-
-
 
 //Create Prepared Statement
 $stmt = $sql->prepare($query);
@@ -125,25 +148,4 @@ echo json_encode($response);
 //echo $query;
 exit();
 
-
-/*
-if ($type == 'new') {
-	//Prepared Query Statement
-	$query = "SELECT * FROM TRANSACTION(TRANSACTION_CATEGORY_ID, TRANSACTION_DATE_SPENT, TRANSACTION_VALUE, TRANSACTION_DESCRIPTION) VALUES(?,?,?,?)";
-
-	//Create Prepared Statement
-	$stmt = $sql->prepare($query);
-
-	// Check if preparation was successfully
-	if(!$stmt)
-	{
-		http_response_code(552);
-		die("Prepared Statement Failed: " . $sql->connect_error);
-	}
-
-	//Insert data and sent statement
-	$stmt->bind_param("ssss", $category_id, $date_spent, $value, $description);
-	$stmt->execute();
-}
-*/
 ?>
