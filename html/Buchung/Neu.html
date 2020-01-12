@@ -1,4 +1,7 @@
-﻿<div class="container">
+﻿
+
+
+<div class="container">
     <div class="input-group input-group-lg">
         <div class="input-group-prepend">
             <button type="button" id="btn_datum" class="btn btn-danger">Datum</button>
@@ -10,7 +13,9 @@
         <div class="input-group-prepend">
             <button type="button" id="btn_kategorie" class="btn btn-danger">Kategorie</button> 
         </div>
-        <select class="custom-select" id="inputKategorie"></select>
+        <select class="custom-select" id="inputKategorie">
+            <option>Auswählen</option>
+        </select>
     </div>
     <br />
     <div class="input-group input-group-lg">
@@ -40,8 +45,48 @@
     <br />
     <button id="id_btn_buchen" type="button" data-toggle="modal" data-target="#exampleModalCenter" class="btn btn-danger btn-lg" onclick="check_buchung();">Prüfen</button>
 </div>
-<br>
-<br>
+
+    <!-- Modal -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title" id="exampleModalLongTitle">Daten überprüfen</h3>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col">
+                        <h5>Datum</h5>
+                        <p id="modal_date"></p>
+                        <hr>
+                        <h5>Kategorie</h5>
+                        <p id="modal_kategorie"></p>
+                    </div>
+
+
+                    <div class="col">
+                        <h5>Betrag</h5>
+                        <p id="modal_betrag"></p>
+                        <hr>
+                        <h5>Bezeichnung</h5>
+                        <p id="modal_bezeichnung"></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" id="btn_modal_buchen" class="btn btn-danger" onclick="buchenNEU();">Buchen</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Abbrechen</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
 
 <script>
 
@@ -87,7 +132,7 @@
     //Change Datum
     function changeDate(data) {
         currDate = this.value;
-        alert(data);
+
     }
 
     // Change Kategorie
@@ -95,19 +140,18 @@
         currKategorieID = this.value;
         currKategorieText = $("#inputKategorie option:selected").text();
 
-        alert(currKategorieID + currKategorieText);
     });
 
     // Change Betrag
     function changeBetrag(data) {
         currBetrag = data;
-        alert(data);
+
     }
 
     // Change Kommentar
     function changeBezeichnung(data) {
         currBezeichnung = data;
-        alert(currBezeichnung);
+
     }
 
     //Change Mode
@@ -150,36 +194,9 @@
         }
 
     }
-    function check_buchung() {
-
-        $('#modal_date').html(currDate);
-        $('#modal_kategorie').html("ID: " + currKategorieID + "<br>Name: " + currKategorieText);
-        $('#modal_betrag').html(currBetrag + "€");
-        $('#modal_bezeichnung').html(currBezeichnung);
-
-    }
 
 
-    function buchenNEU() {
-        $.ajax({
-            type: "post",
-            url: "transaction.php",
-            dataType: 'json',
-            data: {
-                'type': 'new',
-                'change_id': '',
-                'category_id': '4',
-                'date': '2020-01-01',
-                'description': 'Hausrat',
-                'value': '12.99'
-            },
-            success: function () {
-                //Do Something
-            }
-        });
 
-
-    }
 
     function getCategories() {
 
@@ -193,9 +210,41 @@
                 // <option value="1">Fahrrad</option>
 
                 for (i = 0; i < data.length ; i++) {
-                    $("#inputKategorie").append("<option value=" + data[i].id + ">" + data[i].name + "</option>");
+                    $("#inputKategorie").append("<option value=" + data[i].CATEGORY_ID + ">" + data[i].CATEGORY_NAME + "</option>");
                 }
             }
         });
+    }
+
+    function check_buchung() {
+
+        $('#modal_date').html(currDate);
+        $('#modal_kategorie').html("ID: " + currKategorieID + "<br>Name: " + currKategorieText);
+        $('#modal_betrag').html(currBetrag + "€");
+        $('#modal_bezeichnung').html(currBezeichnung);
+
+    }
+
+
+
+    function buchenNEU() {
+        $.ajax({
+            type: "post",
+            url: "transaction.php",
+            dataType: 'json',
+            data: {
+                'type': 'new',
+                'change_id': '',
+                'category_id': currKategorieID,
+                'date': currDate,
+                'description': currBezeichnung,
+                'value': currBetrag
+            },
+            success: function () {
+                //Do Something
+            }
+        });
+
+
     }
 </script>

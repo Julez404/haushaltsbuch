@@ -10,6 +10,7 @@
     <script type="text/javascript" src="js/importHTML.js"></script>
     <script type="text/javascript" src="css/fontawesome/js/all.js"></script>
     <script type="text/javascript" src="css/bootstrap/bootstrap-4.3.1-dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.js"></script>
 
     <!-- StyleSheet -->
     <link rel="stylesheet" href="css/bootstrap/bootstrap-4.3.1-dist/css/bootstrap.min.css">
@@ -17,6 +18,17 @@
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/sidebar.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.css">
+
+
+
+
+
+
+
+
+
+
 </head>
 
 
@@ -116,6 +128,13 @@
             .btn.btn-success.short {
                 width: 50px;
             }
+
+
+        #id_DIV_Buchung_VERLAUF {
+            position: relative;
+            top: -80px;
+            max-height:500px;
+        }
     </style>
 
     <div id="sidebar">
@@ -124,10 +143,10 @@
 
             <a href="#BuchungSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Buchung</a>
             <ul class="collapse" id="BuchungSubmenu">
-                <div class="nav flex-column nav-pills" role="tablist"  onclick="toggleSidebar()" aria-orientation="vertical">
-                    <a class="nav-link active" onclick="$('#DIV_Buchung_NEU').load('/html/Buchung/Neu.html');" data-toggle="pill" href="#id_DIV_Buchung_NEU">Neu</a>
+                <div class="nav flex-column nav-pills" role="tablist" onclick="toggleSidebar()" aria-orientation="vertical">
+                    <a class="nav-link" onclick="$('#DIV_Buchung_NEU').load('/html/Buchung/Neu.html');" data-toggle="pill" href="#id_DIV_Buchung_NEU">Neu</a>
                     <a class="nav-link" onclick="$('#DIV_Buchung_PLANEN').load('/html/Buchung/Planen.html');" data-toggle="pill" href="#id_DIV_Buchung_PLANEN">Planen</a>
-                    <a class="nav-link" onclick="$('#DIV_Buchung_BEARBEITEN').load('/html/Buchung/Bearbeiten.html');" data-toggle="pill" href="#id_DIV_Buchung_BEARBEITEN">Bearbeiten</a>
+                    <a class="nav-link" onclick="$('#DIV_Buchung_VERLAUF').load('/html/Buchung/VERLAUF.html');" data-toggle="pill" href="#id_DIV_Buchung_VERLAUF">Verlauf</a>
                 </div>
             </ul>
             <hr />
@@ -135,7 +154,7 @@
 
             <a href="#AuswertungSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Auswertung</a>
             <ul class="collapse" id="AuswertungSubmenu">
-                <div class="nav flex-column nav-pills" role="tablist"  onclick="toggleSidebar()" aria-orientation="vertical">
+                <div class="nav flex-column nav-pills" role="tablist" onclick="toggleSidebar()" aria-orientation="vertical">
                     <a class="nav-link" onclick="$('#DIV_Auswertung_NEU').load('/html/Auswertung/Neu.html');" data-toggle="pill" href="#id_DIV_Auswertung_NEU">Neu</a>
                     <a class="nav-link" onclick="$('#DIV_Auswertung_PLANEN').load('/html/Auswertung/Planen.html');" data-toggle="pill" href="#id_DIV_Auswertung_PLANEN">Planen</a>
                     <a class="nav-link" onclick="$('#DIV_Auswertung_BEARBEITEN').load('/html/Auswertung/Bearbeiten.html');" data-toggle="pill" href="#id_DIV_Auswertung_BEARBEITEN">Bearbeiten</a>
@@ -175,8 +194,8 @@
                 <div id="DIV_Buchung_NEU">
                 </div>
             </div>
-            <div class="tab-pane fade" id="id_DIV_Buchung_BEARBEITEN" aria-labelledby="v-pills-profile-tab">
-                <div id="DIV_Buchung_BEARBEITEN">
+            <div class="tab-pane fade" id="id_DIV_Buchung_VERLAUF" aria-labelledby="v-pills-profile-tab">
+                <div id="DIV_Buchung_VERLAUF">
                 </div>
             </div>
             <div class="tab-pane fade" id="id_DIV_Buchung_PLANEN" aria-labelledby="v-pills-profile-tab">
@@ -207,8 +226,7 @@
 
         <!-- End Content -->
         <!-- Modal -->
-        <div id="DIV_Buchung_MODAL">
-        </div>
+
     </div>
 
 
@@ -232,6 +250,6 @@
         $('#sidebar').toggleClass('visible')
     }
 
-  
- 
+
+
 </script>
