@@ -21,7 +21,7 @@ if ($sql->connect_error)
 
 if ($type == 'new') {
 	//Prepared Query Statement
-	$query = "INSERT INTO entries (category, date_spent, value, description) VALUES(?,?,?,?)";
+	$query = "INSERT INTO TRANSACTION (TRANSACTION_CATEGORY_ID, TRANSACTION_DATE_SPENT, TRANSACTION_VALUE, TRANSACTION_DESCRIPTION) VALUES(?,?,?,?)";
 
 	//Create Prepared Statement
 	$stmt = $sql->prepare($query);
