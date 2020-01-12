@@ -21,7 +21,7 @@
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.css">
 
 
-
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
 
 
 
@@ -133,7 +133,12 @@
         #id_DIV_Buchung_VERLAUF {
             position: relative;
             top: -80px;
-            max-height:500px;
+            max-height: 500px;
+        }
+
+        .tab-content.charts {
+            position: relative;
+            top: -80px;
         }
     </style>
 
@@ -155,9 +160,10 @@
             <a href="#AuswertungSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Auswertung</a>
             <ul class="collapse" id="AuswertungSubmenu">
                 <div class="nav flex-column nav-pills" role="tablist" onclick="toggleSidebar()" aria-orientation="vertical">
-                    <a class="nav-link" onclick="$('#DIV_Auswertung_NEU').load('/html/Auswertung/Neu.html');" data-toggle="pill" href="#id_DIV_Auswertung_NEU">Neu</a>
-                    <a class="nav-link" onclick="$('#DIV_Auswertung_PLANEN').load('/html/Auswertung/Planen.html');" data-toggle="pill" href="#id_DIV_Auswertung_PLANEN">Planen</a>
+                    <a class="nav-link" onclick="$('#DIV_Auswertung_ÜBERSICHT').load('/html/Auswertung/Übersicht.html');" data-toggle="pill" href="#id_DIV_Auswertung_ÜBERSICHT">Übersicht</a>
+                    <a class="nav-link" onclick="$('#DIV_Auswertung_VERLAUF').load('/html/Auswertung/Verlauf.html');" data-toggle="pill" href="#id_DIV_Auswertung_VERLAUF">Verlauf</a>
                     <a class="nav-link" onclick="$('#DIV_Auswertung_BEARBEITEN').load('/html/Auswertung/Bearbeiten.html');" data-toggle="pill" href="#id_DIV_Auswertung_BEARBEITEN">Bearbeiten</a>
+                    <a class="nav-link" onclick="$('#DIV_Auswertung_FILTER').load('/html/Auswertung/Filter.html');" data-toggle="pill" href="#id_DIV_Auswertung_FILTER">Filter</a>
                 </div>
             </ul>
             <hr />
@@ -204,16 +210,25 @@
             </div>
 
 
-            <div class="tab-pane fade" id="id_DIV_Auswertung_NEU" aria-labelledby="v-pills-profile-tab">
-                <div id="DIV_Auswertung_NEU">
+            <div class="tab-pane fade" id="id_DIV_Auswertung_ÜBERSICHT" aria-labelledby="v-pills-profile-tab">
+                <div id="DIV_Auswertung_ÜBERSICHT">
+                </div>
+            </div>
+            <div class="tab-pane fade" id="id_DIV_Auswertung_VERLAUF" aria-labelledby="v-pills-profile-tab">
+                <div id="DIV_Auswertung_VERLAUF">
+                </div>
+            </div>
+            <div class="tab-pane fade" id="id_DIV_Auswertung_PLANEN" aria-labelledby="v-pills-profile-tab">
+                <div id="DIV_Auswertung_PLANEN">
                 </div>
             </div>
             <div class="tab-pane fade" id="id_DIV_Auswertung_BEARBEITEN" aria-labelledby="v-pills-profile-tab">
                 <div id="DIV_Auswertung_BEARBEITEN">
                 </div>
             </div>
-            <div class="tab-pane fade" id="id_DIV_Auswertung_PLANEN" aria-labelledby="v-pills-profile-tab">
-                <div id="DIV_Auswertung_PLANEN">
+
+            <div class="tab-pane fade" id="id_DIV_Auswertung_FILTER" aria-labelledby="v-pills-profile-tab">
+                <div id="DIV_Auswertung_FILTER">
                 </div>
             </div>
         </div>
