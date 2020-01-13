@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
 
@@ -9,7 +9,7 @@
     <script type="text/javascript" src="js/jquery/3.4.1/jquery.min.js"></script>
     <script type="text/javascript" src="js/importHTML.js"></script>
     <script type="text/javascript" src="css/fontawesome/js/all.js"></script>
-    <script type="text/javascript" src="css/bootstrap/bootstrap-4.3.1-dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.js"></script>
 
     <!-- StyleSheet -->
@@ -143,7 +143,7 @@
     </style>
 
     <div id="sidebar">
-        <h3>Übersicht<i class="fa fa-times" style="margin-left: 50px;" onclick="$('#sidebar').toggleClass('visible')"></i></h3>
+        <h3>Uebersicht<i class="fa fa-times" style="margin-left: 50px;" onclick="$('#sidebar').toggleClass('visible')"></i></h3>
         <ul>
 
             <a href="#BuchungSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Buchung</a>
@@ -160,7 +160,7 @@
             <a href="#AuswertungSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Auswertung</a>
             <ul class="collapse" id="AuswertungSubmenu">
                 <div class="nav flex-column nav-pills" role="tablist" onclick="toggleSidebar()" aria-orientation="vertical">
-                    <a class="nav-link" onclick="$('#DIV_Auswertung_ÜBERSICHT').load('/html/Auswertung/Übersicht.html');" data-toggle="pill" href="#id_DIV_Auswertung_ÜBERSICHT">Übersicht</a>
+                    <a class="nav-link" onclick="$('#DIV_Auswertung_UEBERSICHT').load('/html/Auswertung/Uebersicht.html');" data-toggle="pill" href="#id_DIV_Auswertung_UEBERSICHT">Uebersicht</a>
                     <a class="nav-link" onclick="$('#DIV_Auswertung_VERLAUF').load('/html/Auswertung/Verlauf.html');" data-toggle="pill" href="#id_DIV_Auswertung_VERLAUF">Verlauf</a>
                     <a class="nav-link" onclick="$('#DIV_Auswertung_BEARBEITEN').load('/html/Auswertung/Bearbeiten.html');" data-toggle="pill" href="#id_DIV_Auswertung_BEARBEITEN">Bearbeiten</a>
                     <a class="nav-link" onclick="$('#DIV_Auswertung_FILTER').load('/html/Auswertung/Filter.html');" data-toggle="pill" href="#id_DIV_Auswertung_FILTER">Filter</a>
@@ -210,8 +210,8 @@
             </div>
 
 
-            <div class="tab-pane fade" id="id_DIV_Auswertung_ÜBERSICHT" aria-labelledby="v-pills-profile-tab">
-                <div id="DIV_Auswertung_ÜBERSICHT">
+            <div class="tab-pane fade" id="id_DIV_Auswertung_UEBERSICHT" aria-labelledby="v-pills-profile-tab">
+                <div id="DIV_Auswertung_UEBERSICHT">
                 </div>
             </div>
             <div class="tab-pane fade" id="id_DIV_Auswertung_VERLAUF" aria-labelledby="v-pills-profile-tab">
