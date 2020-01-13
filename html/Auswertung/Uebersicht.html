@@ -1,0 +1,232 @@
+﻿
+
+
+
+
+<div class="tab-content charts" id="pills-tabContent">
+    <div class="tab-pane fade show active" id="pills-Woche" role="tabpanel" aria-labelledby="pills-home-tab">
+        <canvas id="myChart1" width="400" height="400"></canvas>
+    </div>
+    <div class="tab-pane fade" id="pills-Monat" role="tabpanel" aria-labelledby="pills-profile-tab">
+        <canvas id="myChart2" width="400" height="400"></canvas>
+    </div>
+    <div class="tab-pane fade" id="pills-Jahr" role="tabpanel" aria-labelledby="pills-contact-tab">
+        <canvas id="myChart3" width="400" height="400"></canvas>
+    </div>
+    <div class="tab-pane fade" id="pills-Einstellungen" role="tabpanel" aria-labelledby="pills-contact-tab">
+       
+        <div id="DIV_Auswertung_Uebersicht_FILTER">
+        </div>
+    </div>
+</div>
+
+<br />
+<br />
+<br />
+
+<div class="d-flex justify-content-center">
+
+    <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+        <li class="nav-item">
+            <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-Woche" role="tab" aria-controls="pills-home" aria-selected="true"  >Woche</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-Monat" role="tab" aria-controls="pills-profile" aria-selected="false"  >Monat</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-Jahr" role="tab" aria-controls="pills-profile" aria-selected="false"  >Jahr</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-Einstellungen" role="tab" aria-controls="pills-contact" aria-selected="false" ><span style="font-size: 20px;"><i class="fas fa-cog"></i></span></a>
+        </li>
+    </ul>
+</div>
+
+<script>
+  
+
+    $(document).ready(function () {
+        $('#DIV_Auswertung_Uebersicht_FILTER').load('/html/Auswertung/Filter.html')
+        getDataWoche();
+        getDataMonat();
+        getDataJahr();
+
+    });
+
+
+    function getDataWoche() {
+        var labeldata = [];
+        var valueldata = [];
+        $.ajax({
+            type: "post",
+            url: "getTransmissionStructured.php",
+            dataType: 'json',
+            data: { 'group_by': 'TRANSACTION_CATEGORY_ID' },
+            success: function (data) {
+                console.log(data);
+
+                for (var i = 0; i < data.length; i++) {
+                    labeldata[i] = data[i].CATEGORY_NAME;
+                }
+                console.log(labeldata);
+
+                for (var i = 0; i < data.length; i++) {
+                    valueldata[i] = data[i].TRANSACTION_VALUE;
+                }
+                console.log(valueldata);
+
+                createGraphWoche(labeldata, valueldata);
+            }
+
+        });
+    }
+    function createGraphWoche(labeldata, valueldata) {
+        var ctx = document.getElementById('myChart1').getContext('2d');
+        var chart = new Chart(ctx, {
+
+            type: 'doughnut',
+            data: {
+                labels: labeldata,
+                datasets: [{
+                    label: 'Kategorien',
+                    data: valueldata,
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255, 1)',
+                        'rgba(255, 159, 64, 1)',
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 206, 86, 0.2)',
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(153, 102, 255, 0.2)',
+                        'rgba(255, 159, 64, 0.2)'
+                    ],
+                    borderWidth: 0
+                }]
+            },
+            options: {}
+        });
+    }
+
+    ////
+
+    function getDataMonat() {
+        var labeldata = [];
+        var valueldata = [];
+        $.ajax({
+            type: "post",
+            url: "getTransmissionStructured.php",
+            dataType: 'json',
+            data: { 'group_by': 'TRANSACTION_CATEGORY_ID' },
+            success: function (data) {
+                console.log(data);
+
+                for (var i = 0; i < data.length; i++) {
+                    labeldata[i] = data[i].CATEGORY_NAME;
+                }
+                console.log(labeldata);
+
+                for (var i = 0; i < data.length; i++) {
+                    valueldata[i] = data[i].TRANSACTION_VALUE;
+                }
+                console.log(valueldata);
+
+                createGraphMonat(labeldata, valueldata);
+            }
+
+        });
+    }
+    function createGraphMonat(labeldata, valueldata) {
+        var ctx = document.getElementById('myChart2').getContext('2d');
+        var chart = new Chart(ctx, {
+
+            type: 'doughnut',
+            data: {
+                labels: labeldata,
+                datasets: [{
+                    label: 'Kategorien',
+                    data: valueldata,
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255, 1)',
+                        'rgba(255, 159, 64, 1)',
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 206, 86, 0.2)',
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(153, 102, 255, 0.2)',
+                        'rgba(255, 159, 64, 0.2)'
+                    ],
+                    borderWidth: 0
+                }]
+            },
+            options: {}
+        });
+    }
+    /////
+
+    function getDataJahr() {
+        var labeldata = [];
+        var valueldata = [];
+        $.ajax({
+            type: "post",
+            url: "getTransmissionStructured.php",
+            dataType: 'json',
+            data: { 'group_by': 'TRANSACTION_CATEGORY_ID' },
+            success: function (data) {
+                console.log(data);
+
+                for (var i = 0; i < data.length; i++) {
+                    labeldata[i] = data[i].CATEGORY_NAME;
+                }
+                console.log(labeldata);
+
+                for (var i = 0; i < data.length; i++) {
+                    valueldata[i] = data[i].TRANSACTION_VALUE;
+                }
+                console.log(valueldata);
+
+                createGraphJahr(labeldata, valueldata);
+            }
+
+        });
+    }
+    function createGraphJahr(labeldata, valueldata) {
+        var ctx = document.getElementById('myChart3').getContext('2d');
+        var chart = new Chart(ctx, {
+
+            type: 'doughnut',
+            data: {
+                labels: labeldata,
+                datasets: [{
+                    label: 'Kategorien',
+                    data: valueldata,
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255, 1)',
+                        'rgba(255, 159, 64, 1)',
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 206, 86, 0.2)',
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(153, 102, 255, 0.2)',
+                        'rgba(255, 159, 64, 0.2)'
+                    ],
+                    borderWidth: 0
+                }]
+            },
+            options: {}
+        });
+    }
+
+
+</script>
