@@ -148,7 +148,10 @@
     // Change Betrag
     function changeBetrag(data) {
         currBetrag = data;
+        if (vartoggleMenue == "1") {
+            currBetrag = currBetrag * -1;
 
+        }
     }
 
     // Change Kommentar
@@ -231,6 +234,7 @@
 
 
     function buchenNEU() {
+
         $.ajax({
             type: "post",
             url: "transaction.php",
