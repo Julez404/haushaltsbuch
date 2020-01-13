@@ -55,7 +55,7 @@ else
 {
 	if ($group_by == 'TRANSACTION_CATEGORY_ID')
 	{
-		$query = "SELECT $group_by, CATEGORY.CATEGORY_NAME, SUM(TRANSACTION_VALUE) FROM $table";
+		$query = "SELECT $group_by, CATEGORY.CATEGORY_NAME, SUM(TRANSACTION_VALUE) AS 'TRANSACTION_VALUE' FROM $table";
 	}else {
 		$query = "SELECT $group_by, SUM(TRANSACTION_VALUE) FROM $table";
 	}
