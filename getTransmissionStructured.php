@@ -53,7 +53,7 @@ if ($group_by == '')
 }
 else
 {
-	if ($group_by == TRANSACTION_CATEGORY_ID)
+	if ($group_by == 'TRANSACTION_CATEGORY_ID')
 	{
 		$query = "SELECT $group_by, CATEGORY.CATEGORY_NAME, SUM(TRANSACTION_VALUE) FROM $table";
 	}else {
