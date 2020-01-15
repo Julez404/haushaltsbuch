@@ -1,19 +1,23 @@
 ﻿
 
 
+    <table id="example" class="display"></table>
+    <br />
+    <br />
 
-
-
-
-
-        <table id="example" class="display"></table>
 
    
 
 
 <script>
 
-    $(document).ready(function () {
+      
+
+        $(document).ready(function () {
+            $("#id_header_button").empty();
+            $("#id_header_button").append("");
+            $("#id_header_title").html("Verlauf");
+     
         $.ajax({
             type: "post",
             url: "callProcedure.php",

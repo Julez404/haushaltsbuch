@@ -12,6 +12,12 @@
 </div>
 
 <script>
+    $(document).ready(function () {
+        console.log("Buchung Neu ready!");
+        $("#id_header_button").empty();
+        $("#id_header_button").append("");
+        $("#id_header_title").html("Verlauf");
+    });
     var ctx = document.getElementById('myChartVerlauf').getContext('2d');
     var chart = new Chart(ctx, {
         // The type of chart we want to create
