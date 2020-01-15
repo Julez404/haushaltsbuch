@@ -1,49 +1,135 @@
 ﻿
-<div>
-    <canvas id="myChartVerlauf" width="400" height="400"></canvas>
 
 
+        <canvas id="myChartVerlauf" width="400" height="400"></canvas>
+
+<br />
+<br />
+<br />
+
+<div class="d-flex justify-content-center">
+    <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+        <li class="nav-item">
+            <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#" role="tab" aria-controls="pills-home" aria-selected="true" onclick="changeIntervall('day');">Tag</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link " id="pills-home-tab" data-toggle="pill" href="#" role="tab" aria-controls="pills-home" aria-selected="true" onclick="changeIntervall('week' );">Woche</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#" role="tab" aria-controls="pills-profile" aria-selected="false" onclick="changeIntervall('month' );">Monat</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#" role="tab" aria-controls="pills-profile" aria-selected="false" onclick="changeIntervall('year');">Jahr</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#" role="tab" aria-controls="pills-contact" aria-selected="false"><span style="font-size: 20px;"><i class="fas fa-cog"></i></span></a>
+        </li>
+    </ul>
 </div>
+    <div class="d-flex justify-content-center">
+        <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+            <li class="nav-item">
+                <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#" role="tab" aria-controls="pills-home" aria-selected="true" onclick="changeDiagramm ('line');">Linien</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#" role="tab" aria-controls="pills-profile" aria-selected="false" onclick="changeDiagramm('bar');">Balken</a>
+            </li>
 
-<div class="btn-group" role="group" aria-label="Basic example">
-    <button type="button" class="btn btn-secondary">Left</button>
-    <button type="button" class="btn btn-secondary">Middle</button>
-    <button type="button" class="btn btn-secondary">Right</button>
-</div>
+        </ul>
+    </div>
+
+
 
 <script>
+    var intervall = "";
+    var diagramm = "line";
     $(document).ready(function () {
         console.log("Buchung Neu ready!");
         $("#id_header_button").empty();
         $("#id_header_button").append("");
-        $("#id_header_title").html("Verlauf");
+        $("#id_header_title").html("Auswertung Verlauf");
+
+        getData("day","line");
     });
-    var ctx = document.getElementById('myChartVerlauf').getContext('2d');
-    var chart = new Chart(ctx, {
-        // The type of chart we want to create
-        type: 'line',
 
-        // The data for our dataset
-        data: {
-            labels: ['Essen', 'Fahrrad', 'Kino', 'Versicherung', 'Eike', 'Gerd', 'Bullmann'],
-            datasets: [{
-                label: 'Kategorien',
+    function changeDiagramm(graph) {
+        diagramm = graph;
+        getData(intervall, diagramm);
+    }
+
+    function changeIntervall(_intervall) {
+        intervall = _intervall;
+        getData(intervall, diagramm);
+    }
+    function getData(intervall, _diagramm) {
+
+        diagramm = _diagramm;
+        var labeldata = [];
+        var valueldata = [];
+        $.ajax({
+            type: "post",
+            url: "getTransmissionStructured.php",
+            dataType: 'json',
+            data: {
+                'group_by_primary': 'TRANSACTION_DATE_SPENT',
+                'group_by_secondary': intervall, 
+               
+        
+              
+            },
+            success: function (data) {
+                console.log(data);
+
+                for (var i = 0; i < data.length; i++) {
+                    labeldata[i] = data[i].TRANSACTION_DATE_SPENT;
+                }
+                console.log(labeldata);
+
+                for (var i = 0; i < data.length; i++) {
+                    valueldata[i] = data[i].TRANSACTION_VALUE;
+                }
+                console.log(valueldata);
+
+                createGraphWoche(labeldata, valueldata, diagramm);
+            }
+
+        });
+    }
+    function createGraphWoche(labeldata, valueldata, diagramm) {
+
+        var ctx = document.getElementById('myChartVerlauf').getContext('2d');
+        var chart = new Chart(ctx, {
+
+            type: diagramm,
+            data: {
+                labels: labeldata,
+                datasets: [{
+                    label: 'Ausgaben',
+
+                    data: valueldata,
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255, 1)',
+                        'rgba(255, 159, 64, 1)',
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 206, 86, 0.2)',
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(153, 102, 255, 0.2)',
+                        'rgba(255, 159, 64, 0.2)'
+                    ],
+                    borderWidth: 2,
+
+                }]
+            },
+            options: {
+                //   responsive:false
+            }
+        });
+    }
 
 
-                data: [1, 10, 5, 2, 20, 30, 45],
-                backgroundColor: [
-                'rgba(255, 99, 132, 1)',
-                'rgba(54, 162, 235, 1)',
-                'rgba(255, 206, 86, 1)',
-                'rgba(75, 192, 192, 1)',
-                'rgba(153, 102, 255, 1)',
-                'rgba(255, 159, 64, 1)'
-                ],
-                borderWidth: 0
-            }]
-        },
-
-        // Configuration options go here
-        options: {}
-    });
 </script>
