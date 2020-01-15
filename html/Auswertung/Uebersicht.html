@@ -3,40 +3,44 @@
 
 
 
-<div class="tab-content charts" id="pills-tabContent">
-    <div class="tab-pane fade show active" id="pills-Woche" role="tabpanel" aria-labelledby="pills-home-tab">
-        <canvas id="myChart1" width="400" height="400"></canvas>
-    </div>
-    <div class="tab-pane fade" id="pills-Monat" role="tabpanel" aria-labelledby="pills-profile-tab">
-        <canvas id="myChart2" width="400" height="400"></canvas>
-    </div>
-    <div class="tab-pane fade" id="pills-Jahr" role="tabpanel" aria-labelledby="pills-contact-tab">
-        <canvas id="myChart3" width="400" height="400"></canvas>
-    </div>
-    <div class="tab-pane fade" id="pills-Einstellungen" role="tabpanel" aria-labelledby="pills-contact-tab">
-       
-        <div id="DIV_Auswertung_Uebersicht_FILTER">
+
+
+
+
+    <div class="tab-content charts" id="pills-tabContent">
+        <div class="tab-pane fade show active" id="pills-Woche" role="tabpanel" aria-labelledby="pills-home-tab">
+            <canvas id="myChart1" width="400" height="400"></canvas>
+        </div>
+        <div class="tab-pane fade" id="pills-Monat" role="tabpanel" aria-labelledby="pills-profile-tab">
+            <canvas id="myChart2" width="400" height="400"></canvas>
+        </div>
+        <div class="tab-pane fade" id="pills-Jahr" role="tabpanel" aria-labelledby="pills-contact-tab">
+            <canvas id="myChart3" width="400" height="400"></canvas>
+        </div>
+        <div class="tab-pane fade" id="pills-Einstellungen" role="tabpanel" aria-labelledby="pills-contact-tab">
+
+            <div id="DIV_Auswertung_Uebersicht_FILTER">
+            </div>
         </div>
     </div>
 </div>
+    <br />
+    <br />
+    <br />
 
-<br />
-<br />
-<br />
-
-<div class="d-flex justify-content-center">
+    <div class="d-flex justify-content-center">
     <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
         <li class="nav-item">
-            <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-Woche" role="tab" aria-controls="pills-home" aria-selected="true"  >Woche</a>
+            <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-Woche" role="tab" aria-controls="pills-home" aria-selected="true">Woche</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-Monat" role="tab" aria-controls="pills-profile" aria-selected="false"  >Monat</a>
+            <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-Monat" role="tab" aria-controls="pills-profile" aria-selected="false">Monat</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-Jahr" role="tab" aria-controls="pills-profile" aria-selected="false"  >Jahr</a>
+            <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-Jahr" role="tab" aria-controls="pills-profile" aria-selected="false">Jahr</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-Einstellungen" role="tab" aria-controls="pills-contact" aria-selected="false" ><span style="font-size: 20px;"><i class="fas fa-cog"></i></span></a>
+            <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-Einstellungen" role="tab" aria-controls="pills-contact" aria-selected="false"><span style="font-size: 20px;"><i class="fas fa-cog"></i></span></a>
         </li>
     </ul>
 </div>
@@ -60,7 +64,11 @@
             type: "post",
             url: "getTransmissionStructured.php",
             dataType: 'json',
-            data: { 'group_by': 'TRANSACTION_CATEGORY_ID' },
+            data: { 'group_by': 'TRANSACTION_CATEGORY_ID',
+                    'date_from': "",
+                    'date_to': "",
+                    'date_current': ""
+            },
             success: function (data) {
                 console.log(data);
 
@@ -106,7 +114,9 @@
                     borderWidth: 0
                 }]
             },
-            options: {}
+            options: {
+             //   responsive:false
+            }
         });
     }
 
