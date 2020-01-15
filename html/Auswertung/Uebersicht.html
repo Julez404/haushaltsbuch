@@ -18,12 +18,11 @@
             <canvas id="myChart3" width="400" height="400"></canvas>
         </div>
         <div class="tab-pane fade" id="pills-Einstellungen" role="tabpanel" aria-labelledby="pills-contact-tab">
-
             <div id="DIV_Auswertung_Uebersicht_FILTER">
             </div>
         </div>
     </div>
-</div>
+
     <br />
     <br />
     <br />
@@ -68,9 +67,9 @@
             url: "getTransmissionStructured.php",
             dataType: 'json',
             data: { 'group_by': 'TRANSACTION_CATEGORY_ID',
-                    'date_from': "",
-                    'date_to': "",
-                    'date_current': ""
+                    'date_from': "2019-12-23",
+                    'date_to': "2019-12-30",
+                    'date_current': "week"
             },
             success: function (data) {
                 console.log(data);
@@ -132,7 +131,12 @@
             type: "post",
             url: "getTransmissionStructured.php",
             dataType: 'json',
-            data: { 'group_by': 'TRANSACTION_CATEGORY_ID' },
+            data: {
+                'group_by': 'TRANSACTION_CATEGORY_ID',
+                'date_from': "2020-01-05",
+                'date_to': "2020-01-15",
+                'date_current': "month"
+            },
             success: function (data) {
                 console.log(data);
 
@@ -190,7 +194,12 @@
             type: "post",
             url: "getTransmissionStructured.php",
             dataType: 'json',
-            data: { 'group_by': 'TRANSACTION_CATEGORY_ID' },
+            data: {
+                'group_by': 'TRANSACTION_CATEGORY_ID',
+                'date_from': "2020-01-01",
+                'date_to': "2020-01-05",
+                'date_current': "year"
+            },
             success: function (data) {
                 console.log(data);
 
