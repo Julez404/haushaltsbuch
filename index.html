@@ -35,115 +35,127 @@
 <!-- <body style="background-color: #E0F8E6"> -->
 <body>
     <style>
-        /* The switch - the box around the slider */
+      
+        /* The side navigation menu */
+#sidebar {
+  z-index: 10;
+  font-size: 20px;
+  margin: 0;
+  padding: 0;
+  width: 50px;
+  background-color: white;
+  position: fixed;
+  height: 100%;
+    left:-300px;
+  overflow: auto;
+  display: block;
+  transition:left 0.3s linear;
 
-        /* Colors
-        Danger      #DC3545
-        Success     #28A745
-            */
+}
+#sidebar.visible {
+  left:-0px;
+    transition:left 0.3s linear;
+}
 
-        .switch {
-            position: relative;
-            display: inline-block;
-            width: 60px;
-            height: 34px;
-        }
-
-            /* Hide default HTML checkbox */
-            .switch input {
-                opacity: 0;
-                width: 0;
-                height: 0;
-            }
-
-        /* The slider */
-        .slider {
-            position: absolute;
-            cursor: pointer;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-color: #DC3545;
-            -webkit-transition: .4s;
-            transition: .4s;
-        }
-
-            .slider:before {
-                position: absolute;
-                content: "";
-                height: 20px;
-                width: 20px;
-                left: 3px;
-                bottom: 4px;
-                background-color: white;
-                -webkit-transition: .4s;
-                transition: .4s;
-            }
-
-        input:checked + .slider {
-            background-color: #28A745;
-        }
-
-        input:focus + .slider {
-            box-shadow: 0 0 1px #28A745;
-        }
-
-        input:checked + .slider:before {
-            -ms-transform: translateX(32px);
-            transform: translateX(32px);
-        }
-
-        /* Rounded sliders */
-        .slider.round {
-            border-radius: 36px;
-            margin-top: 5px;
-            border: 1px solid white;
-            border-collapse: collapse;
-        }
-
-            .slider.round:before {
-                border-radius: 50%;
-            }
-
-        body {
-            // text-align: center;
-            justify-content: center;
-            align-items: center;
-            // background: #FAD9DC;
-        }
-
-        .btn.btn-danger {
-            width: 160px;
-        }
-
-            .btn.btn-danger.short {
-                width: 50px;
-            }
-
-        .btn.btn-success {
-            width: 160px;
-        }
-
-            .btn.btn-success.short {
-                width: 50px;
-            }
+#sidebar-btn{
+    margin-bottom:10px;
+    margin-right:20px;
+    display:inline-block;
+    vertical-align:middle;
+    width:20px;
+    height:15px;
+    cursor:pointer;
+    color:white;
 
 
-        #id_DIV_Buchung_VERLAUF {
-            position: relative;
-            top: -80px;
-            max-height: 500px;
-        }
 
-        .tab-content.charts {
-            position: relative;
-            top: -80px;
-        }
+}
+#sidebar-btn span{
+
+    position:fixed;
+    font-size: 20px;
+  color:white;
+    display:block;
+    background:#111;
+ 
+
+
+
+}
+
+#Navbar_id navbar navbar-expand-md navbar-dark fixed-top bg-dark navbar-header sidebar-btn btn fa fa-bars{
+text-decoration:none;
+  color: white;
+
+}
+
+.btn {
+    color:white;
+
+}
+.btn:hover {
+    color:white;
+
+}
+
+#sidebar ul {
+    text-align:center;
+       padding:0px;
+   
+}
+#sidebar ul li {
+        list-style: none;
+}
+
+
+
+/* Sidebar links */
+#sidebar a {
+
+  display: block;
+  color: #808080;
+  padding: 16px;
+  text-decoration: none;
+}
+#sidebar h3 {
+    padding: 16px;
+  color: #FFF;
+  background:#DC3545;
+  height:80px;
+
+}
+
+/* Active/current link 
+
+#sidebar ul li a.active {
+     
+  text-decoration: none;
+  font-size: 30px;
+    padding-left: 30px;
+  color: white;
+}
+
+    */
+
+/* Links on mouse-over */
+#sidebar ul li a:hover:not(.active) {
+  color: black;
+    text-decoration: none;
+//transition: all .2s ease;
+ //   font-size: 30px;
+    //padding-left: 30px;
+    background:#F2F5F6;
+}
+
+
+
+
+
+
     </style>
 
     <div id="sidebar">
-        <h3>Uebersicht<i class="fa fa-times" style="margin-left: 50px;" onclick="$('#sidebar').toggleClass('visible')"></i></h3>
+        <h3>Uebersicht<i class="fa fa-times" style="margin-left: 30px;" onclick="$('#sidebar').toggleClass('visible')"></i></h3>
         <ul>
 
             <a href="#BuchungSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Buchung</a>
@@ -179,55 +191,50 @@
         <div class="pos-f-t">
             <nav id="id_navbar" class="navbar navbar-dark bg-danger" style="color: white;">
 
-                <button class="btn" onclick="toggleSidebar()"><span style="font-size: 20px;"><i class="fas fa-bars"></i></span></button>
-                <h4>Haushaltsbuch</h4>
-                <!-- Rounded switch -->
-                <label class="switch">
-                    <input type="checkbox" onclick="toggleMode();">
-                    <span class="slider round"></span>
-                </label>
+                <button class="btn" onclick="toggleSidebar()"><span style="font-size: 24px;"><i class="fas fa-bars"></i></span></button>
+                <h3 id="id_header_title"></h3>
+                <div id="id_header_button">
+                </div>
+            <!--       <span id="id_header_button" style="font-size: 20px; margin-right: 10px;"><i class="fas fa-book-open"></i></span>-->
             </nav>
         </div>
-        <br />
-        <br />
-
 
 
 
         <!-- Content -->
         <div class="tab-content">
-            <div class="tab-pane fade show active" id="id_DIV_Buchung_NEU" aria-labelledby="v-pills-home-tab">
+            <div class="tab-pane fade show active" id="id_DIV_Buchung_NEU" >
                 <div id="DIV_Buchung_NEU">
                 </div>
             </div>
-            <div class="tab-pane fade" id="id_DIV_Buchung_VERLAUF" aria-labelledby="v-pills-profile-tab">
+            <div class="tab-pane fade" id="id_DIV_Buchung_VERLAUF">
                 <div id="DIV_Buchung_VERLAUF">
                 </div>
             </div>
-            <div class="tab-pane fade" id="id_DIV_Buchung_PLANEN" aria-labelledby="v-pills-profile-tab">
+            <div class="tab-pane fade" id="id_DIV_Buchung_PLANEN">
                 <div id="DIV_Buchung_PLANEN">
                 </div>
             </div>
 
 
-            <div class="tab-pane fade" id="id_DIV_Auswertung_UEBERSICHT" aria-labelledby="v-pills-profile-tab">
+            <div class="tab-pane fade" id="id_DIV_Auswertung_UEBERSICHT">
                 <div id="DIV_Auswertung_UEBERSICHT">
                 </div>
             </div>
-            <div class="tab-pane fade" id="id_DIV_Auswertung_VERLAUF" aria-labelledby="v-pills-profile-tab">
+            <div class="tab-pane fade" id="id_DIV_Auswertung_VERLAUF">
                 <div id="DIV_Auswertung_VERLAUF">
                 </div>
             </div>
-            <div class="tab-pane fade" id="id_DIV_Auswertung_PLANEN" aria-labelledby="v-pills-profile-tab">
+            <div class="tab-pane fade" id="id_DIV_Auswertung_PLANEN">
                 <div id="DIV_Auswertung_PLANEN">
                 </div>
             </div>
-            <div class="tab-pane fade" id="id_DIV_Auswertung_BEARBEITEN" aria-labelledby="v-pills-profile-tab">
+            <div class="tab-pane fade" id="id_DIV_Auswertung_BEARBEITEN" >
                 <div id="DIV_Auswertung_BEARBEITEN">
                 </div>
             </div>
 
-            <div class="tab-pane fade" id="id_DIV_Auswertung_FILTER" aria-labelledby="v-pills-profile-tab">
+            <div class="tab-pane fade" id="id_DIV_Auswertung_FILTER" >
                 <div id="DIV_Auswertung_FILTER">
                 </div>
             </div>
@@ -257,7 +264,7 @@
 <script>
 
 
-    var vartoggleMenue = "0";
+   
 
     //Document Ready
 
