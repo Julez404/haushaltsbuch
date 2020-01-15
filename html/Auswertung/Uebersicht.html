@@ -50,6 +50,9 @@
 
     $(document).ready(function () {
         $('#DIV_Auswertung_Uebersicht_FILTER').load('/html/Auswertung/Filter.html')
+        $("#id_header_button").empty();
+        $("#id_header_button").append("");
+        $("#id_header_title").html("Übersicht");
         getDataWoche();
         getDataMonat();
         getDataJahr();
